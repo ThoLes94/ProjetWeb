@@ -16,7 +16,7 @@ if (isset($_GET['login'])) {
 
 function amisde($login){
         $dbh = Database::connect();
-        $user=Utilisateur::getUtilisateur($dbh,$login);
+        $user = Utilisateur::getUtilisateur($dbh,$login);
         $pageTitle="Amis de ".$user->prenom." ".$user->nom; 
         generateHTMLHeader($pageTitle, "css/perso.css");
         echo "<nav id='menu'>";

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <body>
     <div class="container">
         <div class="jumbotron">
@@ -20,4 +19,3 @@
             ?>
         </div>
     </div>
-</body>
