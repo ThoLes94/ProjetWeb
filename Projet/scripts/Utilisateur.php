@@ -11,9 +11,9 @@ class Utilisateur {
  
     public function __toString() {
         if($this->promotion==NULL){
-            return "[".$this->login."]"." ".$this->prenom." <B>".$this->nom."</B>, "."né le ".explode ( "-" ,$this->naissance )[2]."/".explode ( "-" ,$this->naissance )[1]."/".explode ( "-" ,$this->naissance )[0].", "."<B>".$this->email."</B>"." <a href='amisde.php?login=$this->login'>Voir ses amis</a>";
+            return "[".$this->login."] ".$this->prenom." <B>".$this->nom."</B>, né le ".explode ( "-" ,$this->naissance )[2]."/".explode ( "-" ,$this->naissance )[1]."/".explode ( "-" ,$this->naissance )[0].", <B>".$this->email."</B>, <a href='amisde.php?login=$this->login'>Voir ses amis</a>";
         } else {
-            return "[".$this->login."]"." ".$this->prenom." <B>".$this->nom."</B>, "."né le ".explode ( "-" ,$this->naissance )[2]."/".explode ( "-" ,$this->naissance )[1]."/".explode ( "-" ,$this->naissance )[0].", X".$this->promotion.  ", "."<B>".$this->email."</B>"." <a href='amisde.php?login=$this->login'>Voir ses amis</a>";
+            return "[".$this->login."] ".$this->prenom." <B>".$this->nom."</B>, né le ".explode ( "-" ,$this->naissance )[2]."/".explode ( "-" ,$this->naissance )[1]."/".explode ( "-" ,$this->naissance )[0].", X".$this->promotion.", <B>".$this->email."</B>, <a href='amisde.php?login=$this->login'>Voir ses amis</a>";
         }
     }
     public static function getUtilisateur($dbh,$login){
