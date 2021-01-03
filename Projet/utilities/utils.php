@@ -30,7 +30,7 @@
       <meta name="keywords" content="Mots clefs relatifs à cette page"/>
       <meta name="description" content="Descriptif court"/>
       <title>$titre_page</title>
-      <style type=text/css>
+      <style>
          table{
             border:1px solid  black !important;
          }
