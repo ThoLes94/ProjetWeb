@@ -20,7 +20,7 @@
    function generateHTMLHeader($titre_page, $chemin){
       echo <<<CHAINE_DE_FIN
 <!DOCTYPE html>
-<html>
+<html lang="fr">
    <head>
       <link href=$chemin rel="stylesheet">
       <!-- Bootstrap CSS -->
