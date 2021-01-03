@@ -13,6 +13,10 @@
                "name"=>"inscription",
                "title"=>"Inscritption à nos événements",
                "menutitle"=>"S'inscrire"),
+            array(
+               "name"=>"base",
+               "title"=>"Liste de tous les utilisateurs",
+               "menutitle"=>""),
             );
         function generateHTMLHeader($titre_page, $chemin){
             echo <<<CHAINE_DE_FIN
@@ -93,6 +97,9 @@ CHAINE_DE_FIN;
                            </li>
                            <li class="nav-item">
                                  <a class="nav-link" href="index.php?page=contacts">Contact</a>
+                           </li>
+                           <li class="nav-item">
+                                 <a class="nav-link" href="index.php?page=base">Base de données</a>
                            </li>
                         </ul>
                      </div>
