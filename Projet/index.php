@@ -17,16 +17,11 @@
         $pageTitle = "Erreur";
     }
 
-    
-    echo "</div>";
-    generateHTMLFooter();
-
-    generateHTMLHeader("Projet final", "css/perso.css");
+    generateHTMLHeader($pageTitle, "css/perso.css");
     echo "<nav id='menu'>";
         generateMenu();
     echo "</nav>";
-    generateHTMLHeader($pageTitle, "css/perso.css");
-    echo "<div id = 'content'>";
+    echo "<div class='container' id = 'content'>";
         echo '<h1>'.$pageTitle.'</h1>';
         if(checkPage($askedPage)){
             require('content/content_'.$askedPage.'.php');
@@ -34,6 +29,6 @@
         else {
             echo "<p>Désolé, vous êtes trop gentlemen pour accéder à la page demandée.</p>";
         }
-
+    echo "</div>";
     generateHTMLFooter();
 ?>

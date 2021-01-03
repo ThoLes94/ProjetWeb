@@ -19,24 +19,21 @@
             <div class="jumbotron">
                 <h1>Base De Données</h1>
             </div>
-        
-    
 
-
- 
  <?php
     require "scripts/Database.php";
 // opérations sur la base
     $dbh = Database::connect();
-    var_dump($dbh);
-    $requete = "SELECT * FROM `utilisateurs` order by prenom";
-    $sth = $dbh->prepare($requete);
-    var_dump($sth);
+    $query = "SELECT * FROM `utilisateurs` order by nom, prenom";
+    $sth = $dbh->prepare($query);
+    $sth->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
     $sth->execute();
-    echo $sth->rowCount().'<br>';
-    while($toto = $sth->fetch(PDO::FETCH_ASSOC)){
-        echo $toto['prenom'].'<br>';
-    }
+    $user = $sth->fetch();
+    $sth->closeCursor();
+    echo $user;
+    if (isset($_GET['hello'])) {
+        $user->affiche_amis();
+      }
 ?>
         </div>
     </body>
