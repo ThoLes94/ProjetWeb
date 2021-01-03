@@ -1,2 +1,1 @@
-<body>
-    <h2>Bienvenue à vous</h2>
+<h2>Bienvenue à vous</h2>
