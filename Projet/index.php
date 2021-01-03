@@ -5,7 +5,7 @@
     }
     else {
         echo "<p><strong>Le nom donné est inexistant, affichage par défaut!</strong></p>";
-        $askedPage = accueil;
+        $askedPage = "welcome";
     }
 
 
@@ -17,6 +17,14 @@
         $pageTitle = "Erreur";
     }
 
+    
+    echo "</div>";
+    generateHTMLFooter();
+
+    generateHTMLHeader("Projet final", "css/perso.css");
+    echo "<nav id='menu'>";
+        generateMenu();
+    echo "</nav>";
     generateHTMLHeader($pageTitle, "css/perso.css");
     echo "<div id = 'content'>";
         echo '<h1>'.$pageTitle.'</h1>';
@@ -26,13 +34,6 @@
         else {
             echo "<p>Désolé, vous êtes trop gentlemen pour accéder à la page demandée.</p>";
         }
-    echo "</div>";
-    generateHTMLFooter();
-
-    generateHTMLHeader("Projet final", "css/perso.css");
-    echo "<nav id='menu'>";
-        generateMenu();
-    echo "</nav>";
 
     generateHTMLFooter();
 ?>

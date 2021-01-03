@@ -25,15 +25,15 @@
 
  
  <?php
-    require "Projet/scripts/Database.php";
+    require "scripts/Database.php";
 // opérations sur la base
     $dbh = Database::connect();
     var_dump($dbh);
-    $requete = "SELECT * FROM `utilisateurs` order by nom, prenom";
+    $requete = "SELECT * FROM `utilisateurs` order by prenom";
     $sth = $dbh->prepare($requete);
     var_dump($sth);
     $sth->execute();
-    echo $sth->rowCount();
+    echo $sth->rowCount().'<br>';
     while($toto = $sth->fetch(PDO::FETCH_ASSOC)){
         echo $toto['prenom'].'<br>';
     }
