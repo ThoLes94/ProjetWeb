@@ -14,7 +14,6 @@
                "title"=>"Inscritption à nos événements",
                "menutitle"=>"S'inscrire"),
             );
-
         function generateHTMLHeader($titre_page, $chemin){
             echo <<<CHAINE_DE_FIN
               <!DOCTYPE html>

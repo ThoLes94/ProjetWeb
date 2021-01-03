@@ -22,18 +22,17 @@
 
  <?php
     require "scripts/Database.php";
+    require "scripts/Utilisateur.php";
+    require('utilities/utils.php');
 // opérations sur la base
     $dbh = Database::connect();
     $query = "SELECT * FROM `utilisateurs` order by nom, prenom";
     $sth = $dbh->prepare($query);
     $sth->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
     $sth->execute();
-    $user = $sth->fetch();
-    $sth->closeCursor();
-    echo $user;
-    if (isset($_GET['hello'])) {
-        $user->affiche_amis();
-      }
+    while($toto = $sth->fetch()){
+        echo $toto.'<br>';
+    }
 ?>
         </div>
     </body>
