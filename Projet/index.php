@@ -1,5 +1,8 @@
 <?php
-    require('utilities/utils.php');
+    require('utilities/utils.php'); 
+    require "scripts/Database.php";
+    require "scripts/Utilisateur.php";
+    $dbh = Database::connect();
     if(isset($_GET['page'])){
         $askedPage = $_GET['page'];
     }
@@ -7,16 +10,17 @@
         echo "<p><strong>Le nom donné est inexistant, affichage par défaut!</strong></p>";
         $askedPage = "welcome";
     }
-
-
     $authorized=checkPage($askedPage);
     if($authorized){
         $pageTitle=getPageTitle($askedPage);
+        if (isset($_GET['login']) &&  strcmp($pageTitle, "Amis de ")==0) {
+            $user = Utilisateur::getUtilisateur($dbh,$_GET['login']);
+            $pageTitle="Amis de ".$user->prenom." ".$user->nom; 
+        }
     }
     else {
         $pageTitle = "Erreur";
     }
-
     generateHTMLHeader($pageTitle, "css/perso.css");
     echo "<nav id='menu'>";
         generateMenu();
@@ -31,4 +35,5 @@
         }
     echo "</div>";
     generateHTMLFooter();
+    $dbh = null;
 ?>
