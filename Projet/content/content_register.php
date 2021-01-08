@@ -1,4 +1,3 @@
-<h2>Créez votre compte chez nous</h2>
 <?php
 $form_value_valid=false;
 
@@ -9,21 +8,15 @@ if(isset($_POST["prenom"]) && $_POST["prenom"] != ""
     && isset($_POST["login"]) && $_POST["login"] != "" 
     && isset($_POST["up"]) && $_POST["up"] != "" && $_POST["up"]==$_POST["up2"]) {
     $form_value_valid=true;
-    echo "<h3>Compte créé!!</h3>";
-    echo "<p> Vous pouvez retourner à l'acceuil </p>";
-} else {
-    if (isset($_POST["login"])){
-        if ($_POST["login"]==false){
-            echo "<h3>Nom d'utilisateur déjà existant!!</h3>";
-            $login="";
-        } else {
-            $login = $_POST["login"];
-        }
-    } else $login = "";
+    echo "traitement";
+} 
+if (!$form_value_valid) {
     if (isset($_POST["prenom"])) $prenom = $_POST["prenom"];
     else $prenom = "";
     if (isset($_POST["email"])) $email = $_POST["email"];
     else $email = "";
+    if (isset($_POST["login"])) $login = $_POST["login"];
+    else $login = "";
     if (isset($_POST["nom"])) $nom = $_POST["nom"];
     else $nom = "";
     if (isset($_POST["naissance"])) $naissance = $_POST["naissance"];
@@ -32,7 +25,7 @@ if(isset($_POST["prenom"]) && $_POST["prenom"] != ""
     else $promotion = null;
  
 ?>
-<form action="index.php?todo=register&page=inscription" method="post" oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
+<form action="index.php?todo=register&page=register" method="post" oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
 <p>Nom d'utilisateur : <input type="text" name="login" value="<?php echo $login ?>" required /></p>
 <p>Prénom : <input type="text" name="prenom" value="<?php echo $prenom ?>" required /></p>
 <p>Nom : <input type="text" name="nom" value="<?php echo $nom ?>" required /></p>

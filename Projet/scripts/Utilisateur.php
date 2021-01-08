@@ -30,8 +30,8 @@ class Utilisateur {
 
     public static function insererUtilisateur($dbh,$login,$mdp,$nom,$prenom,$promotion,$naissance,$email,$feuille){
         $sth = $dbh->prepare("INSERT INTO `utilisateurs` (`login`, `mdp`, `nom`, `prenom`, `promotion`, `naissance`, `email`, `feuille`) VALUES(?,SHA1(?),?,?,?,?,?,?)");
-        if(getUtilisateur($dbh,$login) == null){
-            $sth->execute(array($login,SHA1($mdp),$nom,$prenom,$promotion,$naissance,$email,$feuille));
+        if(Utilisateur::getUtilisateur($dbh,$login) == null){
+            $sth->execute(array($login,$mdp,$nom,$prenom,$promotion,$naissance,$email,$feuille));
         }   
     }
 

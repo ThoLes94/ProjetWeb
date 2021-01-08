@@ -11,12 +11,27 @@
     require "scripts/Utilisateur.php";
     require "logInOut/printForms.php";
     require "logInOut/logInOut.php";
+    require "register/register.php";
     $dbh = Database::connect();
     if(isset($_GET["todo"]) && $_GET["todo"] == "login") {
         logIn($dbh);
     }
     if(isset($_GET["todo"]) && $_GET["todo"] == "logout") {
         logOut();
+    }
+    if(isset($_GET["todo"]) && $_GET["todo"] == "register") {
+        $user=Utilisateur::getUtilisateur($dbh,$_POST["login"]);
+        if ($user==false){
+            if ($_POST["promotion"]==0) $promotion=null;
+            else $promotion = $_POST["promotion"];
+            Utilisateur::insererUtilisateur($dbh,$_POST["login"],$_POST["up"],$_POST["nom"],$_POST["prenom"],$promotion,$_POST["naissance"],$_POST["email"],$_POST["feuille"]);
+        } else {
+            $askedPage="inscription";
+            $form_value_valid=false;
+            $_POST["login"]=false;
+        }
+
+        
     }
     if(isset($_GET['page'])){
         $askedPage = $_GET['page'];
@@ -39,10 +54,12 @@
     echo "<nav id='menu'>";
         generateMenu();
     echo "</nav>";
-    if($_SESSION['loggedIn']) {
-        printLogoutForm();
-    } else {
-        printLoginForm();
+    if ($askedPage!="inscription"){
+        if($_SESSION['loggedIn']) {
+            printLogoutForm();
+        } else {
+            printLoginForm();
+        }
     }
     echo "<div class='container' id = 'content'>";
         echo '<h1>'.$pageTitle.'</h1>';

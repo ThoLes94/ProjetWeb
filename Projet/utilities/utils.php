@@ -19,11 +19,7 @@
       array(
          "name"=>"amisde",
          "title"=>"Amis de ",
-         "menutitle"=>""),
-      array(
-         "name"=>"formulaire",
-         "title"=>"Formulaire",
-         "menutitle"=>""),
+         "menutitle"=>"")
       );
    function generateHTMLHeader($titre_page, $chemin){
       echo <<<CHAINE_DE_FIN
@@ -103,7 +99,7 @@ CHAINE_DE_FIN;
                   <a class="nav-link" href="index.php?page=base">Base de données</a>
             </li>
             <li class="nav-item">
-                  <a class="nav-link" href="index.php?page=formulaire">Formulaire</a>
+                  <a class="nav-link" href="index.php?page=inscription">Inscription</a>
             </li>
          </ul>
       </div>
