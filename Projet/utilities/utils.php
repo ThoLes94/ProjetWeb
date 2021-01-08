@@ -19,7 +19,7 @@
       array(
          "name"=>"amisde",
          "title"=>"Amis de ",
-         "menutitle"=>"S'inscrire"),
+         "menutitle"=>""),
       );
    function generateHTMLHeader($titre_page, $chemin){
       echo <<<CHAINE_DE_FIN
