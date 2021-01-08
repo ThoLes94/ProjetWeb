@@ -16,6 +16,10 @@
          "name"=>"base",
          "title"=>"Liste de tous les utilisateurs",
          "menutitle"=>""),
+      array(
+         "name"=>"amisde",
+         "title"=>"Amis de ",
+         "menutitle"=>"S'inscrire"),
       );
    function generateHTMLHeader($titre_page, $chemin){
       echo <<<CHAINE_DE_FIN

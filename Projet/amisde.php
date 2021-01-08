@@ -2,17 +2,17 @@
     require "scripts/Database.php";
     require "scripts/Utilisateur.php";
     require('utilities/utils.php');
-if (isset($_GET['login'])) {
-    amisde($_GET['login']);
-} else {
-    echo "ERREUR, veuillez retournez à l'accueil";
-    generateHTMLHeader("ERREUR", "css/perso.css");
-    echo "<nav id='menu'>";
-        generateMenu();
-    echo "</nav>";
-    require('content/content_'.'welcome'.'.php');
-    generateHTMLFooter();
-}
+    if (isset($_GET['login'])) {
+        amisde($_GET['login']);
+    } else {
+        echo "ERREUR, veuillez retournez à l'accueil";
+        generateHTMLHeader("ERREUR", "css/perso.css");
+        echo "<nav id='menu'>";
+            generateMenu();
+        echo "</nav>";
+        require('content/content_'.'welcome'.'.php');
+        generateHTMLFooter();
+    }
 
 function amisde($login){
         $dbh = Database::connect();
