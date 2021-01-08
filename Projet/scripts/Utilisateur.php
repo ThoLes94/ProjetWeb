@@ -35,8 +35,7 @@ class Utilisateur {
         }   
     }
 
-    public static function testerMdp($dbh,$login,$mdp){
-        $user=getUtilisateur($dbh,$login);
+    public static function testerMdp($dbh,$user,$mdp){
         return strcmp(SHA1($mdp), $user->mdp)== 0;
     }
 
