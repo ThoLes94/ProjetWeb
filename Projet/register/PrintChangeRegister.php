@@ -49,14 +49,14 @@ function printFormChange(){
 <form action="index.php?todo=changePassword&page=changePassword" method="post" oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
 <p> Ancien mot de passe : <input id="oldpassword" type=password required name=old> </p>
 <p>
-    <label for="password1">Password:</label>
+    <label for="password1">Nouveau mot de passe:</label>
     <input id="password1" type=password required name=up>
 </p>
 <p>
-    <label for="password2">Confirm password:</label>
+    <label for="password2">Confirmation du mot de passe:</label>
     <input id="password2" type=password name=up2>
 </p>
-<input type=submit value="Change Password">
+<input type=submit value="Changer le mot de passe">
 </form>
 <?php
 }
