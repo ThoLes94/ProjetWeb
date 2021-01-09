@@ -6,33 +6,15 @@
         $_SESSION['initiated'] = true;
         $_SESSION['loggedIn'] = false;
     }
-    require('utilities/utils.php'); 
+
+    require "utilities/utils.php"; 
     require "scripts/Database.php";
     require "scripts/Utilisateur.php";
     require "logInOut/printForms.php";
     require "logInOut/logInOut.php";
-    require "register/register.php";
-    $dbh = Database::connect();
-    if(isset($_GET["todo"]) && $_GET["todo"] == "login") {
-        logIn($dbh);
-    }
-    if(isset($_GET["todo"]) && $_GET["todo"] == "logout") {
-        logOut();
-    }
-    if(isset($_GET["todo"]) && $_GET["todo"] == "register") {
-        $user=Utilisateur::getUtilisateur($dbh,$_POST["login"]);
-        if ($user==false){
-            if ($_POST["promotion"]==0) $promotion=null;
-            else $promotion = $_POST["promotion"];
-            Utilisateur::insererUtilisateur($dbh,$_POST["login"],$_POST["up"],$_POST["nom"],$_POST["prenom"],$promotion,$_POST["naissance"],$_POST["email"],$_POST["feuille"]);
-        } else {
-            $askedPage="inscription";
-            $form_value_valid=false;
-            $_POST["login"]=false;
-        }
+    require "register/PrintChangeRegister.php";
 
-        
-    }
+    $dbh = Database::connect();
     if(isset($_GET['page'])){
         $askedPage = $_GET['page'];
     }
@@ -50,11 +32,19 @@
     else {
         $pageTitle = "Erreur";
     }
+    if(isset($_GET["todo"])){
+        if ($_GET["todo"] == "login") {
+            logIn($dbh);
+        }
+        if ($_GET["todo"] == "logout"){
+            logOut();
+        }
+    }
     generateHTMLHeader($pageTitle, "css/perso.css");
     echo "<nav id='menu'>";
         generateMenu();
     echo "</nav>";
-    if ($askedPage!="inscription"){
+    if (isset($_GET["todo"]) && $_GET["todo"] == "connection"){
         if($_SESSION['loggedIn']) {
             printLogoutForm();
         } else {

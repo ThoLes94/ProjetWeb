@@ -1,7 +1,7 @@
 <?php
 if (isset($_GET['login'])) {
     echo "<div class='container'>";
-    $table=$user->getAmis();
+    $table=$user->getAmis($dbh);
     foreach ($table as $v1) {
         echo '<p>'.$v1.'<br>'.'</p>'. PHP_EOL;
     }

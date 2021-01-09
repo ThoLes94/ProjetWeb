@@ -1,6 +1,5 @@
 <?php
-function printForm($dbh){
-    $user=Utilisateur::getUtilisateur($dbh,$_POST["login"]);
+function printFormRegister(){ 
     if (isset($_POST["prenom"])) $prenom = $_POST["prenom"];
     else $prenom = "";
     if (isset($_POST["email"])) $email = $_POST["email"];
@@ -12,8 +11,7 @@ function printForm($dbh){
     if (isset($_POST["naissance"])) $naissance = $_POST["naissance"];
     else $naissance = "";
     if (isset($_POST["promotion"])) $promotion = $_POST["promotion"];
-    else $promotion = null;
-    
+    else $promotion = null;  
     ?>
     <form action="index.php?todo=register&page=inscription" method="post" oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
     <p>Nom d'utilisateur : <input type="text" name="login" value="<?php echo $login ?>" required /></p>
@@ -43,4 +41,23 @@ function printForm($dbh){
     <?php
 }
 
+function printFormChange(){
+    $prenom=$_SESSION['prenom'];
+    echo "<p> Bonjour $prenom, </p>";
+    echo "<p> Veuillez remplir le formulaire ci-dessous pour changer de mot de passe </p>";
+?>
+<form action="index.php?todo=changePassword&page=changePassword" method="post" oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
+<p> Ancien mot de passe : <input id="oldpassword" type=password required name=old> </p>
+<p>
+    <label for="password1">Password:</label>
+    <input id="password1" type=password required name=up>
+</p>
+<p>
+    <label for="password2">Confirm password:</label>
+    <input id="password2" type=password name=up2>
+</p>
+<input type=submit value="Change Password">
+</form>
+<?php
+}
 ?>

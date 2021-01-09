@@ -1,16 +1,22 @@
 <?php 
 function logIn($dbh){
     if(isset($_POST["login"]) && $_POST["login"] != "" && isset($_POST["mdp"]) && $_POST["mdp"] != "") {
-        $login=$_POST["login"];
-        $mdp=$_POST["mdp"];
-        $user=Utilisateur::getUtilisateur($dbh,$login);
-        if ($user!=false && Utilisateur::testerMdp($dbh,$user,$mdp) ){
-            $_SESSION['loggedIn']=true;
+        $login = $_POST["login"];
+        $mdp = $_POST["mdp"];
+        $user = Utilisateur::getUtilisateur($dbh,$login);
+        if ($user != false && Utilisateur::testerMdp($dbh,$user,$mdp) ){
+            $_SESSION['loggedIn'] = true;
+            $_SESSION['login'] = $user->login;
+            $_SESSION['prenom']=$user->prenom;
+            $_SESSION['nom']=$user->nom;
         }
     }
 }
 
 function logOut(){
     unset($_SESSION['loggedIn']);
+    unset($_SESSION['login']);
+    unset($_SESSION['prenom']);
+    unset($_SESSION['nom']);
     $_SESSION['loggedIn']=false;
 }
