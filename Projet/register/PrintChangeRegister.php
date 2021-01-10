@@ -41,10 +41,19 @@ function printFormRegister(){
     <?php
 }
 
-function printFormChange(){
+function printFormChange($dbh){
     $prenom=$_SESSION['prenom'];
     echo "<p> Bonjour $prenom, </p>";
     echo "<p> Veuillez remplir le formulaire ci-dessous pour changer de mot de passe </p>";
+    if (isset($_GET["todo"]) && $_GET["todo"]=="changePassword"){
+        if (!isset($_POST["up"]) || !isset($_POST["up2"]) || $_POST["up"]!= $_POST["up2"]){
+            echo "<p style='color:#FF0000'> Les deux mots de passe sont différents!</p>";
+        } 
+        $user=Utilisateur::getUtilisateur($dbh,$_SESSION["login"]);
+        if (!isset($_POST['old']) || !Utilisateur::testerMdp($dbh,$user,$_POST['old'])){
+            echo "<p style='color:#FF0000'> Ancien mot de passe incorrect</p>";
+        }
+    }
 ?>
 <form action="index.php?todo=changePassword&page=changePassword" method="post" oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
 <p> Ancien mot de passe : <input id="oldpassword" type=password required name=old> </p>
