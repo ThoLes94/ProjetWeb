@@ -89,7 +89,7 @@ CHAINE_DE_FIN;
 
    function generateMenu(){
       if (isset($_GET["page"])) $page=$_GET["page"];
-      else $page=$welcome;
+      else $page="welcome";
       echo <<<CHAINE_DE_FIN
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
