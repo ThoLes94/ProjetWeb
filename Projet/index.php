@@ -44,7 +44,7 @@
     echo "<nav id='menu'>";
         generateMenu();
     echo "</nav>";
-    if (isset($_GET["todo"]) && $_GET["todo"] == "connection"){
+    if (isset($_GET["todo"]) && $_GET["todo"] == "connexion"){
         if($_SESSION['loggedIn']) {
             printLogoutForm();
         } else {

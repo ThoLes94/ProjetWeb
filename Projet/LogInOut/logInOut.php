@@ -9,8 +9,8 @@ function logIn($dbh){
             $_SESSION['login'] = $user->login;
             $_SESSION['prenom']=$user->prenom;
             $_SESSION['nom']=$user->nom;
-        }
-    }
+        } else $_GET["todo"]= "connexion";
+    } else $_GET["todo"]= "connexion";
 }
 
 function logOut(){
