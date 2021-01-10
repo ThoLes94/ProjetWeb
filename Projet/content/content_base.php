@@ -13,7 +13,8 @@
                     echo '<p>'.$toto.'<br>'.'</p>'. PHP_EOL;
                 }
             } else {
-                echo "<p> Vous devez être connecté pour accéder à la base de données. </p>";
+                echo "<p> Connectez vous pour pouvoir changer votre mot de passe </p>";
+                printLoginForm();
             }
         ?>
     </div>
