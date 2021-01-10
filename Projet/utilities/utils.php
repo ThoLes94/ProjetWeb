@@ -10,7 +10,7 @@
          "menutitle"=>"Nous contacter"),
       array(
          "name"=>"inscription",
-         "title"=>"Inscritption à nos événements",
+         "title"=>"Inscription à nos événements",
          "menutitle"=>"S'inscrire"),
       array(
          "name"=>"base",
