@@ -23,6 +23,10 @@
       array(
          "name"=>"changePassword",
          "title"=>"Changement de mot de passe",
+         "menutitle"=>""),
+      array(
+         "name"=>"deleteUser",
+         "title"=>"Se désinscrire",
          "menutitle"=>"")
       );
    function generateHTMLHeader($titre_page, $chemin){
@@ -109,9 +113,6 @@ CHAINE_DE_FIN;
             <li class="nav-item">
                   <a class="nav-link" href="index.php?page=base">Base de données</a>
             </li>
-            <li class="nav-item" style="float:right">
-                  <a class="nav-link" href="index.php?page=changePassword">Compte</a>
-            </li>
          </ul>
 CHAINE_DE_FIN;
          if ($_SESSION['loggedIn'] == false){
@@ -127,6 +128,7 @@ CHAINE_DE_FIN;   }
             echo <<<CHAINE_DE_FIN
          <ul class="nav navbar-nav navbar-right">
             <li><a href="index.php?page=changePassword"><span class="glyphicon glyphicon-user"></span> Mon compte </a></li>
+            <li><a href="index.php?page=deleteUser"><span class="glyphicon glyphicon-user"></span> Supprimer mon compte </a></li>
             <li><a href="index.php?page=$page&todo=logout"><span class="glyphicon glyphicon-log-in"></span> Se Déconnecter</a></li>
          </ul>
       </div>

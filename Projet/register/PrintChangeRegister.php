@@ -60,4 +60,17 @@ function printFormChange(){
 </form>
 <?php
 }
+
+function printFormDeletingAccount(){
+    $prenom=$_SESSION['prenom'];
+    echo "<p> Bonjour $prenom, </p>";
+    echo "<p> Nous sommes tristes de vous voir partir, remplissez le formulaire ci-dessous pour valider votre désinscription </p>";
+?>
+<form action="index.php?todo=deleteUser&page=deleteUser" method="post">
+<p>Mot de passe : <input type="password" name="mdp" required /></p>
+<p><input type="submit" value="Valider" /></p>
+</form>
+<?php
+
+}
 ?>
