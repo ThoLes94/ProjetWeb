@@ -4,7 +4,7 @@
     </div>
     <div class="container">
         <?php
-            if (!isset($_SESSION['loggedIn'])) {
+            if (!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
                 echo "Page non autorisée";
                 return;
             }

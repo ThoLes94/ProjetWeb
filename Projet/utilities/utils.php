@@ -119,7 +119,7 @@ CHAINE_DE_FIN;
             echo <<<CHAINE_DE_FIN
          <ul class="nav navbar-nav navbar-right">
             <li><a href="index.php?page=inscription"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
-            <li><a href="index.php?page=$page&todo=connection"><span class="glyphicon glyphicon-log-in"></span> Se Connecter</a></li>
+            <li><a href="index.php?page=$page&todo=connexion"><span class="glyphicon glyphicon-log-in"></span> Se Connecter</a></li>
          </ul>
       </div>
 </nav>
