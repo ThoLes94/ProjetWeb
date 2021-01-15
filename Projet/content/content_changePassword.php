@@ -20,11 +20,11 @@ if ($_SESSION["loggedIn"]){
         }
     } else printFormChange($dbh);
 
-
 } else {
     echo "<p> Connectez vous pour pouvoir changer votre mot de passe </p>";
     printLoginForm();
 }
+
 
 
 ?>

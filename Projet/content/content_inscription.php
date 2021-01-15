@@ -15,6 +15,13 @@ if(isset($_POST["prenom"]) && $_POST["prenom"] != ""
         Utilisateur::insererUtilisateur($dbh,$_POST["login"],$_POST["up"],$_POST["nom"],$_POST["prenom"],$promotion,$_POST["naissance"],$_POST["email"],$_POST["feuille"]);
         echo "<h3>Compte créé!!</h3>";
         echo "<p> Vous pouvez retourner à l'acceuil </p>";
+        echo <<<CHAINE
+        <script type="text/javascript">
+    setTimeout(function() {
+        location.href = 'index.php'
+    }, 3000); // 5000 is the time to wait (ms) -> 5 seconds
+</script>
+CHAINE;
         $form_value_valid=true;
     }
 } if(!$form_value_valid) {

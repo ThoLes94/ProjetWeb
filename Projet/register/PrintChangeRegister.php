@@ -43,7 +43,8 @@ function printFormRegister(){
 
 function printFormChange($dbh){
     $prenom=$_SESSION['prenom'];
-    echo "<p> Bonjour $prenom, </p>";
+    echo "<p> Bonjour $prenom </p>";
+    echo "<h3> Changer de mot de passe </h3>";
     echo "<p> Veuillez remplir le formulaire ci-dessous pour changer de mot de passe </p>";
     if (isset($_GET["todo"]) && $_GET["todo"]=="changePassword"){
         if (!isset($_POST["up"]) || !isset($_POST["up2"]) || $_POST["up"]!= $_POST["up2"]){
@@ -67,6 +68,8 @@ function printFormChange($dbh){
 </p>
 <input type=submit value="Changer le mot de passe">
 </form>
+<h3> Supprimer mon compte </h3>
+<a href='index.php?page=deleteUser' class='w3-btn '> Supprimer mon compte </a> 
 <?php
 }
 

@@ -22,7 +22,7 @@
          "menutitle"=>""),
       array(
          "name"=>"changePassword",
-         "title"=>"Changement de mot de passe",
+         "title"=>"Mon compte",
          "menutitle"=>""),
       array(
          "name"=>"deleteUser",
@@ -115,11 +115,20 @@ CHAINE_DE_FIN;
             </li>
          </ul>
 CHAINE_DE_FIN;
-         if ($_SESSION['loggedIn'] == false){
+         if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false){
             echo <<<CHAINE_DE_FIN
          <ul class="nav navbar-nav navbar-right">
+            <li> 
+               <form action="index.php?todo=login&page=$page" method='post'>
+                  <p style = "padding-top: 10px; padding-bottom: 10px" >
+                     <input type="text" name="login" placeholder="login" required />
+                     <input type="password" name="mdp" placeholder="mot de passe" required />
+                     <input type="submit" value="Valider" />
+                  </p>
+               </form>
+            </li>
             <li><a href="index.php?page=inscription"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
-            <li><a href="index.php?page=$page&todo=connexion"><span class="glyphicon glyphicon-log-in"></span> Se Connecter</a></li>
+            
          </ul>
       </div>
 </nav>
@@ -128,7 +137,6 @@ CHAINE_DE_FIN;   }
             echo <<<CHAINE_DE_FIN
          <ul class="nav navbar-nav navbar-right">
             <li><a href="index.php?page=changePassword"><span class="glyphicon glyphicon-user"></span> Mon compte </a></li>
-            <li><a href="index.php?page=deleteUser"><span class="glyphicon glyphicon-user"></span> Supprimer mon compte </a></li>
             <li><a href="index.php?page=$page&todo=logout"><span class="glyphicon glyphicon-log-in"></span> Se Déconnecter</a></li>
          </ul>
       </div>
