@@ -9,7 +9,7 @@ function printLoginForm(){
     echo <<<CHAINE_DE_FIN
     <form action="index.php?todo=login&page=$var" method='post'>
         <p>Nom d'utilisateur ou adresse mail: <input type="text" name="login" placeholder="login" required /></p>
-        <p>Mot de passe :
+        <p>Mot de passe : 
         <input type="password" name="mdp" required />
         </p>
         <p><input type="submit" value="Valider" /></p>

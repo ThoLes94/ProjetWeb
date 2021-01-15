@@ -1,7 +1,7 @@
 <?php
 class Database {
     public static function connect() {
-        $dsn = 'mysql:dbname=fsdhfkjl;host=127.0.0.1';
+        $dsn = 'mysql:dbname=base_projet;host=127.0.0.1';
         $user = 'root';
         $password = '';
         $dbh = null;
