@@ -10,8 +10,21 @@
          "menutitle"=>"Nous contacter"),
       array(
          "name"=>"inscription",
-         "title"=>"Inscritption à nos événements",
+         "title"=>"Inscription aux événements",
          "menutitle"=>"S'inscrire"),
+
+      array(
+         "name"=>"inscription_cours",
+         "title"=>"Inscription aux ateliers couture",
+         "menutitle"=>"Ateliers couture"),
+      array(
+         "name"=>"actualites",
+         "title"=>"Actualités du binet",
+         "menutitle"=>"Actualités"),
+      array(
+         "name"=>"photos",
+         "title"=>"Photos des derniers événements",
+         "menutitle"=>"galerie"),
       array(
          "name"=>"base",
          "title"=>"Liste de tous les utilisateurs",
@@ -90,7 +103,13 @@ CHAINE_DE_FIN;
                   <a class="nav-link" href="index.php?page=welcome">Accueil <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                  <a class="nav-link" href="#">Informations pratiques</a>
+                  <a class="nav-link" href="index.php?page=actualites">Actualités</a>
+            </li>
+            <li class="nav-item">
+                  <a class="nav-link" href="index.php?page=inscription_cours">Ateliers couture</a>
+            </li>
+            <li class="nav-item">
+                  <a class="nav-link" href="index.php?page=photos">Galerie</a>
             </li>
             <li class="nav-item">
                   <a class="nav-link" href="index.php?page=contacts">Contact</a>
