@@ -4,7 +4,6 @@
     if (!isset($_SESSION['initiated'])) {
         session_regenerate_id();
         $_SESSION['initiated'] = true;
-        $_SESSION['loggedIn'] = false;
     }
 
     require "utilities/utils.php"; 
@@ -13,6 +12,7 @@
     require "logInOut/printForms.php";
     require "logInOut/logInOut.php";
     require "register/PrintChangeRegister.php";
+    
 
     $dbh = Database::connect();
     if(isset($_GET['page'])){

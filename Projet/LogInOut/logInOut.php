@@ -18,5 +18,4 @@ function logOut(){
     unset($_SESSION['login']);
     unset($_SESSION['prenom']);
     unset($_SESSION['nom']);
-    $_SESSION['loggedIn']=false;
 }

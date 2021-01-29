@@ -1,5 +1,12 @@
 <?php
 
+session_name("BananePoire");
+session_start();
+
+if (!isset($_SESSION['loggedIn'])) {
+  exit();
+}
+
 //--------------------------------------------------------------------------------------------------
 // This script reads event data from a JSON file and outputs those events which are within the range
 // supplied by the "start" and "end" GET parameters.
@@ -10,7 +17,7 @@
 //--------------------------------------------------------------------------------------------------
 
 // Require our Event class and datetime utilities
-require dirname(__FILE__) . '/utils.php';
+require 'utils.php';
 
 // Short-circuit if the client did not give us a date range.
 if (!isset($_GET['start']) || !isset($_GET['end'])) {
@@ -30,7 +37,7 @@ if (isset($_GET['timeZone'])) {
 }
 
 // Read and parse our events JSON file into an array of event data arrays.
-$json = file_get_contents(dirname(__FILE__) . '/json/events.json');
+$json = file_get_contents('../json/events.json');
 $input_arrays = json_decode($json, true);
 
 // Accumulate an output array of event data arrays.

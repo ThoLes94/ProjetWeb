@@ -33,10 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     editable: true,
     dayMaxEvents: true, // allow "more" link when too many events
     events: {
-      url: 'scripts/get-events.php',
-      failure: function() {
-        document.getElementById('script-warning').style.display = 'block'
-      }
+      url: 'scripts/get-events.php', 
     },
     loading: function(bool) {
       document.getElementById('loading').style.display =
