@@ -30,6 +30,10 @@
          "title"=>"Liste de tous les utilisateurs",
          "menutitle"=>""),
       array(
+         "name"=>"calendrier",
+         "title"=>"Nos événements",
+         "menutitle"=>""),
+      array(
          "name"=>"amisde",
          "title"=>"Amis de ",
          "menutitle"=>""),
@@ -55,6 +59,9 @@
             border:1px solid  black !important;
          }
       </style>
+      <link href='lib/main.css' rel='stylesheet' />
+      <script src='lib/main.js'></script>
+
    </head>
 
    <body>
