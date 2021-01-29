@@ -10,7 +10,7 @@
          "menutitle"=>"Nous contacter"),
       array(
          "name"=>"inscription",
-         "title"=>"Inscritption à nos événements",
+         "title"=>"Inscription à nos événements",
          "menutitle"=>"S'inscrire"),
       array(
          "name"=>"base",
@@ -20,6 +20,14 @@
          "name"=>"amisde",
          "title"=>"Amis de ",
          "menutitle"=>""),
+      array(
+         "name"=>"changePassword",
+         "title"=>"Mon compte",
+         "menutitle"=>""),
+      array(
+         "name"=>"deleteUser",
+         "title"=>"Se désinscrire",
+         "menutitle"=>"")
       );
    function generateHTMLHeader($titre_page, $chemin){
       echo <<<CHAINE_DE_FIN
@@ -27,10 +35,16 @@
 <html lang="fr">
    <head>
       <link href=$chemin rel="stylesheet">
+      <link href= "css/w3.css" rel="stylesheet">
       <!-- Bootstrap CSS -->
       <link href="css/bootstrap.min.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
       <meta charset="UTF-8"/>
-      <meta name="author" content="Nom de l'auteur"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="Victor Mongay et Thomas Lespargot" content="Nom de l'auteur"/>
       <meta name="keywords" content="Mots clefs relatifs à cette page"/>
       <meta name="description" content="Descriptif court"/>
       <title>$titre_page</title>
@@ -78,12 +92,13 @@ CHAINE_DE_FIN;
    }
 
    function generateMenu(){
+      if (isset($_GET["page"])) $page=$_GET["page"];
+      else $page="welcome";
       echo <<<CHAINE_DE_FIN
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
          <ul class="navbar-nav mr-auto">
             <li class="nav-item">
@@ -99,9 +114,36 @@ CHAINE_DE_FIN;
                   <a class="nav-link" href="index.php?page=base">Base de données</a>
             </li>
          </ul>
+CHAINE_DE_FIN;
+         if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false){
+            echo <<<CHAINE_DE_FIN
+         <ul class="nav navbar-nav navbar-right">
+            <li> 
+               <form action="index.php?todo=login&page=$page" method='post'>
+                  <p style = "padding-top: 10px; padding-bottom: 10px" >
+                     <input type="text" name="login" placeholder="login" required />
+                     <input type="password" name="mdp" placeholder="mot de passe" required />
+                     <input type="submit" value="Valider" />
+                  </p>
+               </form>
+            </li>
+            <li><a href="index.php?page=inscription"><span class="glyphicon glyphicon-user"></span> S'inscrire</a></li>
+            
+         </ul>
       </div>
 </nav>
-CHAINE_DE_FIN;    
+CHAINE_DE_FIN;   }
+         else {
+            echo <<<CHAINE_DE_FIN
+         <ul class="nav navbar-nav navbar-right">
+            <li><a href="index.php?page=changePassword"><span class="glyphicon glyphicon-user"></span> Mon compte </a></li>
+            <li><a href="index.php?page=$page&todo=logout"><span class="glyphicon glyphicon-log-in"></span> Se Déconnecter</a></li>
+         </ul>
+      </div>
+</nav>
+
+CHAINE_DE_FIN;
+         }
    }
        
 

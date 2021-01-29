@@ -4,7 +4,10 @@
     </div>
     <div class="container">
         <?php
-        // opérations sur la base
+            if (!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
+                echo "Page non autorisée";
+                return;
+            }
             $query = "SELECT * FROM `utilisateurs` order by nom, prenom";
             $sth = $dbh->prepare($query);
             $sth->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
