@@ -27,7 +27,7 @@ CHAINE;
     }
 } if(!$form_value_valid) {
     if (isset($_GET["todo"]) && $_GET["todo"]=="register"){
-        if (!isset($_POST["prenom"]) || $_POST["prenom"] == "" ) echo "<p style='color:#FF0000'> cPrénom non valide </p>";
+        if (!isset($_POST["prenom"]) || $_POST["prenom"] == "" ) echo "<p style='color:#FF0000'> Prénom non valide </p>";
         if (!isset($_POST["nom"]) || $_POST["nom"] == "" ) echo "<p style='color:#FF0000'> Nom non valide </p>";
         if (!isset($_POST["naissance"]) || $_POST["naissance"] == "") echo "<p style='color:#FF0000'> Date de naissance non valide </p>";
         if (!isset($_POST["email"]) || $_POST["email"] == "") echo "<p style='color:#FF0000'> Adresse mail non valide</p>";
@@ -35,7 +35,7 @@ CHAINE;
         $user=Utilisateur::getUtilisateur($dbh,$_POST["login"]);
         if ($user!=false){
             echo "<p style='color:#FF0000'>Nom d'utilisateur déjà existant</p>";
-        
+    
         }
         if (!isset($_POST["up"]) || !isset($_POST["up2"]) || $_POST["up"] == "") echo "<p style='color:#FF0000'> Mot de passe non valide</p>";
         else if ($_POST["up"]!=$_POST["up2"]) echo "<p style='color:#FF0000'>Les deux mots de passe ne sont pas identiques</p>";

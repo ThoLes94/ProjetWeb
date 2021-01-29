@@ -1,0 +1,2 @@
+<p>Les ateliers couture sont ouverts à tous les élèves de la promo, sont gratuits et dispensés par des professionels de la couture.<br />
+Aucun prérequis n'est évidemment nécessaire, il y a des groupes de niveau.</p>
