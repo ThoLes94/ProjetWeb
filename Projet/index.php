@@ -7,7 +7,6 @@
         $askedPage = $_GET['page'];
     }
     else {
-        echo "<p><strong>Le nom donné est inexistant, affichage par défaut!</strong></p>";
         $askedPage = "welcome";
     }
     $authorized=checkPage($askedPage);
