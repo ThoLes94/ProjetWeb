@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
   var initialLocaleCode = 'fr';
-
   var calendar = new FullCalendar.Calendar(calendarEl, {
     headerToolbar: {
       left: 'prev,next today',
@@ -11,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     locale: initialLocaleCode,
     initialDate: Date.now(),
     navLinks: true, // can click day/week names to navigate views
-    selectable: true,
+    selectable: false,
     selectMirror: true,
     select: function(arg) {
       var title = prompt('Event Title:');
