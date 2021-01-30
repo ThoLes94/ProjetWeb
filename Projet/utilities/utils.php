@@ -10,7 +10,6 @@
          "menutitle"=>"Nous contacter"),
       array(
          "name"=>"inscription",
-
          "title"=>"Inscription à nos événements",
          "menutitle"=>"S'inscrire"),
 
@@ -35,6 +34,10 @@
          "title"=>"Amis de ",
          "menutitle"=>""),
       array(
+         "name"=>"tableau",
+         "title"=>"Amis de ",
+         "menutitle"=>""),
+      array(
          "name"=>"changePassword",
          "title"=>"Mon compte",
          "menutitle"=>""),
@@ -51,7 +54,6 @@
       <link href=$chemin rel="stylesheet">
       <link href= "css/w3.css" rel="stylesheet">
       <!-- Bootstrap CSS -->
-      <link href="css/bootstrap.min.css" rel="stylesheet">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -109,12 +111,18 @@ CHAINE_DE_FIN;
       if (isset($_GET["page"])) $page=$_GET["page"];
       else $page="welcome";
       echo <<<CHAINE_DE_FIN
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav mr-auto">
+<nav class="navbar navbar-inverse">
+   <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a class="navbar-brand" href="#">STYL'X</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+         <ul class="nav navbar-nav">
             <li class="nav-item">
                   <a class="nav-link" href="index.php?page=welcome">Accueil <span class="sr-only">(current)</span></a>
             </li>
@@ -151,6 +159,7 @@ CHAINE_DE_FIN;
             
          </ul>
       </div>
+   </div>
 </nav>
 CHAINE_DE_FIN;   }
          else {
@@ -160,6 +169,7 @@ CHAINE_DE_FIN;   }
             <li><a href="index.php?page=$page&todo=logout"><span class="glyphicon glyphicon-log-in"></span> Se Déconnecter</a></li>
          </ul>
       </div>
+   </div>
 </nav>
 
 CHAINE_DE_FIN;
