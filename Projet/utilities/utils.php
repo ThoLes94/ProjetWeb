@@ -35,6 +35,10 @@
          "title"=>"Amis de ",
          "menutitle"=>""),
       array(
+         "name"=>"tableau",
+         "title"=>"Amis de ",
+         "menutitle"=>""),
+      array(
          "name"=>"changePassword",
          "title"=>"Mon compte",
          "menutitle"=>""),
@@ -70,6 +74,15 @@
             border:1px solid  black !important;
          }
       </style>
+<<<<<<< Updated upstream
+=======
+      <link href='lib/main.css' rel='stylesheet' />
+      <script src='lib/main.js'></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css"/>
+      <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+      
+      
+>>>>>>> Stashed changes
    </head>
 
    <body>
