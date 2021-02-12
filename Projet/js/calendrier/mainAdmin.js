@@ -10,11 +10,12 @@ document.addEventListener('DOMContentLoaded', function() {
         locale: initialLocaleCode,
         initialDate: Date.now(),
         navLinks: true, // can click day/week names to navigate views
-        selectable: false,
+        selectable: true,
         timeZone: 'Europe/Paris',
+        selectMirror: true,
         initialView: 'timeGridWeek',
         nowIndicator: true,
-        selectMirror: true,
+        selectable: true,
         select: function(arg) {
             var title = prompt('Event Title:');
             if (title) {

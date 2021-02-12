@@ -8,15 +8,16 @@ if ($_SESSION["loggedIn"]){
         $user=Utilisateur::getUtilisateur($dbh,$login);
         if($user == false){
             echo "<p> Vous devez être identifié pour pouvoir vous inscrire à un événement</p>";
-        } else{
+        } else {
             if (!Utilisateur::testerMdp($dbh,$user,$_POST['mdp'])){
                 echo "<p style='color:#FF0000'> Mot de passe incorrect</p>";
-                printEventForm();
-            } else{
-                insererInscription($id_evenement,$login)
+                printFormEvent();
+            } else {
+                insererInscription($id_evenement,$login);
             }
+        }
     } else printFormDeletingAccount();
-
 } else echo "<p>Connectez vous pour vous inscrire</p>";
+
     ?>
 

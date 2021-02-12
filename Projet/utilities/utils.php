@@ -12,10 +12,13 @@
          "name"=>"inscription",
          "title"=>"Inscription sur le site",
          "menutitle"=>"S'inscrire"),
-
       array(
          "name"=>"inscription_cours",
          "title"=>"Inscription aux différents événements",
+         "menutitle"=>"Evénements"),
+      array(
+         "name"=>"creerEvenement",
+         "title"=>"Ajouter des événements",
          "menutitle"=>"Evénements"),
       array(
          "name"=>"actualites",

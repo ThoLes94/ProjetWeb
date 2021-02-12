@@ -96,7 +96,7 @@ class Event {
     if (isset($this->end)) {
       $array['end'] = $this->end->format($format);
     }
-
+    echo $array;
     return $array;
   }
 
