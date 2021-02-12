@@ -10,13 +10,13 @@
          "menutitle"=>"Nous contacter"),
       array(
          "name"=>"inscription",
-         "title"=>"Inscription à nos événements",
+         "title"=>"Inscription sur le site",
          "menutitle"=>"S'inscrire"),
 
       array(
          "name"=>"inscription_cours",
-         "title"=>"Inscription aux ateliers couture",
-         "menutitle"=>"Ateliers couture"),
+         "title"=>"Inscription aux différents événements",
+         "menutitle"=>"Evénements"),
       array(
          "name"=>"actualites",
          "title"=>"Actualités du binet",
@@ -25,6 +25,10 @@
          "name"=>"photos",
          "title"=>"Photos des derniers événements",
          "menutitle"=>"galerie"),
+      array(
+         "name"=>"ajouter_evenement",
+         "title"=>"Ajouter un nouvel événement",
+         "menutitle"=>"Nouvel événement"),
       array(
          "name"=>"base",
          "title"=>"Liste de tous les utilisateurs",
@@ -181,6 +185,4 @@ CHAINE_DE_FIN;   }
 CHAINE_DE_FIN;
          }
    }
-       
-
 ?>
