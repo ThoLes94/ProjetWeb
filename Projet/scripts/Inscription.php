@@ -2,23 +2,23 @@
     class inscription{
         public $id_evenement;
         public $id_eleve;
-
     }
-    public static function getInscription($dbh,$id_evenement,$id_eleve){
-        $id_evenement="'".$id_evenement."'";
-        $id_eleve="'".$id_eleve."'";
-        $query = "SELECT * FROM `inscription` WHERE `id_evenement`=$id_evenement AND `id_eleve`=$id_eleve"  ;
+    
+    function getInscription($dbh,$id_evenement,$id_eleve){
+        //$id_evenement="'".$id_evenement."'";
+       // $id_eleve="'".$id_eleve"'";
+        $query = "SELECT * FROM `inscription` WHERE `id_event`=? AND `id_eleve`=?"  ;
         $sth = $dbh->prepare($query);
         $sth->setFetchMode(PDO::FETCH_CLASS, 'Inscription');
-        $sth->execute();
+        $sth->execute(array($id_evenement,$id_eleve));
         $inscription = $sth->fetch();
         $sth->closeCursor();
         return $inscription;
     }
 
-    public function insererInscription($id_evenement,$id_eleve){
-        $sth = $dbh->prepare("INSERT INTO `inscription` (`id_evenement`, `id_eleve`) VALUES(?,?)");
-        if(getInscription()==null){
+    function insererInscription($id_evenement,$id_eleve,$dbh){
+        $sth = $dbh->prepare("INSERT INTO `inscription` (`id_event`, `id_eleve`) VALUES(?,?)");
+        if(getInscription($dbh,$id_evenement,$id_eleve)==null){
             $sth->execute(array($id_evenement,$id_eleve));
             return true;
         }

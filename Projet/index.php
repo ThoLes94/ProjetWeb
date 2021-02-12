@@ -10,9 +10,12 @@
     require "utilities/utils.php"; 
     require "scripts/Database.php";
     require "scripts/Utilisateur.php";
+    require "scripts/Evenement.php";
+    require "scripts/Inscription.php";
     require "logInOut/printForms.php";
     require "logInOut/logInOut.php";
     require "register/PrintChangeRegister.php";
+    require "register/PrintEventForm.php";
 
     $dbh = Database::connect();
     if(isset($_GET['page'])){
