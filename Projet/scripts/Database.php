@@ -17,10 +17,10 @@ class Database {
 
     public static function insererUtilisateur($dbh,$login,$mdp,$nom,$prenom,$promotion,$naissance,$email,$feuille){
         $requete = "INSERT INTO `utilisateurs` (`login`, `mdp`, `nom`, `prenom`, `promotion`, `naissance`, `email`, `feuille`)
-        VALUES ($login, SHA1($mdp),$nom,$prenom,$promotion,$naissance,$email,$feuille);";
+        VALUES (?, SHA1(?),?,?,?,?,?,?);";
         $sth = $dbh->prepare($requete);
         var_dump($sth);
-        $sth->execute();
+        $sth->execute(array($login,$mdp,$nom,$prenom,$promotion,$naissance,$email,$feuille));
     }
 }
 ?>
