@@ -10,29 +10,30 @@
 date_default_timezone_set('UTC');
 
 
-class Event {
+class Event
+{
 
   // Tests whether the given ISO8601 string has a time-of-day or not
   const ALL_DAY_REGEX = '/^\d{4}-\d\d-\d\d$/'; // matches strings like "2013-12-29"
-
+  public $id;
   public $title;
   public $allDay; // a boolean
   public $start; // a DateTime
   public $end; // a DateTime, or null
   public $properties = array(); // an array of other misc properties
-
+  public $categories;
 
   // Constructs an Event object from the given array of key=>values.
   // You can optionally force the timeZone of the parsed dates.
-  public function __construct($array, $timeZone=null) {
+  public function __construct($array, $timeZone = null)
+  {
 
     $this->title = $array['title'];
 
     if (isset($array['allDay'])) {
       // allDay has been explicitly specified
       $this->allDay = (bool)$array['allDay'];
-    }
-    else {
+    } else {
       // Guess allDay based off of ISO8601 date strings
       $this->allDay = preg_match(self::ALL_DAY_REGEX, $array['start']) &&
         (!isset($array['end']) || preg_match(self::ALL_DAY_REGEX, $array['end']));
@@ -58,15 +59,15 @@ class Event {
 
   // Returns whether the date range of our event intersects with the given all-day range.
   // $rangeStart and $rangeEnd are assumed to be dates in UTC with 00:00:00 time.
-  public function isWithinDayRange($rangeStart, $rangeEnd) {
+  public function isWithinDayRange($rangeStart, $rangeEnd)
+  {
 
     // Normalize our event's dates for comparison with the all-day range.
     $eventStart = stripTime($this->start);
 
     if (isset($this->end)) {
       $eventEnd = stripTime($this->end); // normalize
-    }
-    else {
+    } else {
       $eventEnd = $eventStart; // consider this a zero-duration event
     }
 
@@ -76,8 +77,8 @@ class Event {
 
 
   // Converts this Event object back to a plain data array, to be used for generating JSON
-  public function toArray() {
-
+  public function toArray()
+  {
     // Start with the misc properties (don't worry, PHP won't affect the original array)
     $array = $this->properties;
 
@@ -86,8 +87,7 @@ class Event {
     // Figure out the date format. This essentially encodes allDay into the date string.
     if ($this->allDay) {
       $format = 'Y-m-d'; // output like "2013-12-29"
-    }
-    else {
+    } else {
       $format = 'c'; // full ISO8601 output, like "2013-12-29T09:00:00+08:00"
     }
 
@@ -96,11 +96,52 @@ class Event {
     if (isset($this->end)) {
       $array['end'] = $this->end->format($format);
     }
-    echo $array;
     return $array;
   }
 
+  public static function getEvenement($dbh, $id)
+  {
+    $query = "SELECT * FROM `evenement` WHERE `id`=?";
+    $sth = $dbh->prepare($query);
+    $sth->execute(array($id));
+    $array = $sth->fetch();
+    $sth->closeCursor();
+    $event = new Event($array);
+    return $event;
+  }
+
+  public static function insererEvenement($dbh, $id, $title, $allDay, $start, $end, $properties, $categorie)
+  {
+    $sth = $dbh->prepare("INSERT INTO `utilisateurs` (`id`,`title`, `allDay`, `start`, `end`, `properties`, `categorie`) VALUES(?,?,?,?,?,?,?)");
+    if (Utilisateur::getUtilisateur($dbh, $title) == null) {
+      $sth->execute(array($id, $title, $allDay, $start, $end, $properties, $categorie));
+      return true;
+    }
+    return false;
+  }
+
+  public static function changeDate($dbh,$id,$newStart, $newEnd){
+    $query="UPDATE `utilisateurs` SET `start`=? ; SET `end`=? WHERE `id`=?";
+    $sth = $dbh->prepare($query);
+    if(Utilisateur::getUtilisateur($dbh,$id) != null){
+        $sth->execute(array($newStart, $newEnd,$id));
+        return true;
+    }
+    return false;
 }
+
+  public static function deleteEvent($dbh,$id){
+    $query="DELETE FROM `evenement` WHERE `id`=?";
+    $sth = $dbh->prepare($query);
+    if(Event::getEvenement($dbh,$id) != null){
+        $sth->execute(array($id));
+        return true;
+    }
+    return false;
+}
+}
+
+
 
 
 // Date Utilities
@@ -108,12 +149,13 @@ class Event {
 
 
 // Parses a string into a DateTime object, optionally forced into the given timeZone.
-function parseDateTime($string, $timeZone=null) {
+function parseDateTime($string, $timeZone = null)
+{
   $date = new DateTime(
     $string,
     $timeZone ? $timeZone : new DateTimeZone('UTC')
-      // Used only when the string is ambiguous.
-      // Ignored if string has a timeZone offset in it.
+    // Used only when the string is ambiguous.
+    // Ignored if string has a timeZone offset in it.
   );
   if ($timeZone) {
     // If our timeZone was ignored above, force it.
@@ -125,6 +167,7 @@ function parseDateTime($string, $timeZone=null) {
 
 // Takes the year/month/date values of the given DateTime and converts them to a new DateTime,
 // but in UTC.
-function stripTime($datetime) {
+function stripTime($datetime)
+{
   return new DateTime($datetime->format('Y-m-d'));
 }

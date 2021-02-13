@@ -50,6 +50,7 @@ class Utilisateur {
         $result = $sth->fetchAll();
         return $result;
     }
+    
     public static function changePassword($dbh,$login,$newmdp){
         $mdp=SHA1($newmdp);
         $query="UPDATE `utilisateurs` SET `mdp`=? WHERE `login`=?";
