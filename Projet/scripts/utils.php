@@ -7,27 +7,25 @@
 //--------------------------------------------------------------------------------------------------
 
 // PHP will fatal error if we attempt to use the DateTime class without this being set.
-date_default_timezone_set('UTC');
-
+date_default_timezone_set('Europe/Paris');
 
 class Event
 {
 
   // Tests whether the given ISO8601 string has a time-of-day or not
   const ALL_DAY_REGEX = '/^\d{4}-\d\d-\d\d$/'; // matches strings like "2013-12-29"
-  public $id;
+
   public $title;
   public $allDay; // a boolean
   public $start; // a DateTime
   public $end; // a DateTime, or null
   public $properties = array(); // an array of other misc properties
-  public $categories;
+
 
   // Constructs an Event object from the given array of key=>values.
   // You can optionally force the timeZone of the parsed dates.
   public function __construct($array, $timeZone = null)
   {
-
     $this->title = $array['title'];
 
     if (isset($array['allDay'])) {
@@ -79,6 +77,7 @@ class Event
   // Converts this Event object back to a plain data array, to be used for generating JSON
   public function toArray()
   {
+
     // Start with the misc properties (don't worry, PHP won't affect the original array)
     $array = $this->properties;
 
@@ -96,53 +95,61 @@ class Event
     if (isset($this->end)) {
       $array['end'] = $this->end->format($format);
     }
+
     return $array;
   }
 
   public static function getEvenement($dbh, $id)
   {
-    $query = "SELECT * FROM `evenement` WHERE `id`=?";
+    $query = "SELECT * FROM `evenements` WHERE `id`=?";
     $sth = $dbh->prepare($query);
     $sth->execute(array($id));
     $array = $sth->fetch();
     $sth->closeCursor();
+    if ($array == null) {
+      return false;
+    }
     $event = new Event($array);
     return $event;
   }
 
-  public static function insererEvenement($dbh, $id, $title, $allDay, $start, $end, $properties, $categorie)
+  public static function insererEvenement($dbh, $id, $title, $start, $end, $description, $categorie, $lieu)
   {
-    $sth = $dbh->prepare("INSERT INTO `utilisateurs` (`id`,`title`, `allDay`, `start`, `end`, `properties`, `categorie`) VALUES(?,?,?,?,?,?,?)");
-    if (Utilisateur::getUtilisateur($dbh, $title) == null) {
-      $sth->execute(array($id, $title, $allDay, $start, $end, $properties, $categorie));
+    $sth = $dbh->prepare("INSERT INTO `evenements` (`id`,`title`, `start`, `end`, `description`, `categorie`, `lieu`) VALUES(?,?,?,?,?,?,?)");
+    if (Event::getEvenement($dbh, $id) == null) {
+      $sth->execute(array($id, $title, $start->format('Y-m-d H:i:s'), $end->format('Y-m-d H:i:s'), $description, $categorie, $lieu));
       return true;
     }
     return false;
   }
 
-  public static function changeDate($dbh,$id,$newStart, $newEnd){
-    $query="UPDATE `utilisateurs` SET `start`=? ; SET `end`=? WHERE `id`=?";
+  public static function changeDate($dbh, $id, $newStart, $newEnd)
+  {
+    $query = "UPDATE `evenements` SET `start`=? ; SET `end`=? WHERE `id`=?";
     $sth = $dbh->prepare($query);
-    if(Utilisateur::getUtilisateur($dbh,$id) != null){
-        $sth->execute(array($newStart, $newEnd,$id));
-        return true;
+    if (Utilisateur::getUtilisateur($dbh, $id) != null) {
+      $sth->execute(array($newStart, $newEnd, $id));
+      return true;
     }
     return false;
-}
+  }
 
-  public static function deleteEvent($dbh,$id){
-    $query="DELETE FROM `evenement` WHERE `id`=?";
+  public static function deleteEvent($dbh, $id)
+  {
+    $query = "DELETE FROM `evenements` WHERE `id`=?";
     $sth = $dbh->prepare($query);
-    if(Event::getEvenement($dbh,$id) != null){
-        $sth->execute(array($id));
-        return true;
+    if (Event::getEvenement($dbh, $id) != false) {
+      $sth->execute(array($id));
+      return true;
     }
     return false;
+  }
+
+  public function __toString()
+  {
+    return $this->title . ' ' . $this->properties['id'] . ' ' . date_format($this->start, 'Y-m-d H:i:s');
+  }
 }
-}
-
-
-
 
 // Date Utilities
 //----------------------------------------------------------------------------------------------
@@ -153,7 +160,7 @@ function parseDateTime($string, $timeZone = null)
 {
   $date = new DateTime(
     $string,
-    $timeZone ? $timeZone : new DateTimeZone('UTC')
+    $timeZone ? $timeZone : new DateTimeZone('Europe/Paris')
     // Used only when the string is ambiguous.
     // Ignored if string has a timeZone offset in it.
   );

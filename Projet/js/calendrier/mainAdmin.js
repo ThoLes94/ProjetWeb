@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initialDate: Date.now(),
         navLinks: true, // can click day/week names to navigate views
         selectable: true,
-        //timeZone: 'Europe/Paris',
+        timeZone: 'Europe/Paris',
         selectMirror: true,
         initialView: 'timeGridWeek',
         allDaySlot: false,
@@ -48,11 +48,12 @@ function descrip_a() {
 }
 
 function affiche(arg) {
+
     myDate = arg.start;
     myDate2 = arg.end;
-    var heure = myDate.getHours();
+    var heure = myDate.getHours() - 1;
     var minutes = myDate.getMinutes();
-    var heure1 = myDate2.getHours();
+    var heure1 = myDate2.getHours() - 1;
     var minutes1 = myDate2.getMinutes();
     var hor1;
     if (heure < 10) hor1 = "0" + heure.toString() + ":";
@@ -75,12 +76,19 @@ function affiche(arg) {
     $("#formdate").val(date2);
     $("#formstart").val(hor1);
     $("#formend").val(hor2);
+    $("#banane").val(arg.id);
+    document.getElementById("banane").value = "test"
+    console.log(arg.id);
+    document.getElementById("idevent2").value = arg.id;
     if (arg.title != undefined) {
         document.getElementById("nom").innerHTML = arg.title;
         document.getElementById("formnom").value = arg.title;
+        $("#formdesc").val(arg.extendedProps.description);
+        $("#lieu").val(arg.extendedProps.lieu)
     }
     $("#descrip").removeClass("w3-hide");
-
+    $("#idevent").val(arg.id);
+    $("#banane").addClass("w3-hide");
 }
 
 function sauver(title, start, end) {

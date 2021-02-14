@@ -12,6 +12,7 @@
     require "logInOut/printForms.php";
     require "logInOut/logInOut.php";
     require "register/PrintChangeRegister.php";
+    require "scripts/utils.php";
     
 
     $dbh = Database::connect();
@@ -51,6 +52,32 @@
             printLoginForm();
         }
     }
+    if (isset($_GET['todo']) && $_GET['todo'] == "addEvent") {
+        if (!isset($_POST['idevent2'])){
+            echo 'erreur';
+            return;
+        } 
+        $id = $_POST['idevent2'];
+        $test= Event::deleteEvent($dbh, $id);  
+        $nom = $_POST['nom'];
+        $desc = $_POST['description'];
+        $start = new DateTime($_POST['jour'] . ' ' . $_POST['start']);
+        $lieu = $_POST['lieu'];
+        $categorie = "bonjour";
+        $end = new DateTime($_POST['jour'] . ' ' . $_POST['end']);
+        $event = Event::getEvenement($dbh, $id);
+        while ($event != false) {
+            $id = random_bytes(12);
+            $event = Event::getEvenement($dbh, $id);
+        }
+        Event::insererEvenement($dbh, $id, $nom, $start, $end, $desc, $categorie, $lieu);
+    }
+    
+    if (isset($_GET['todo']) && $_GET['todo'] == "removeEvent") {
+        if (!isset($_POST['idevent'])) echo 'erreur';
+        $id = $_POST['idevent'];
+        $test= Event::deleteEvent($dbh, $id);    
+    }
     echo "<div class='container' id = 'content'>";
         echo '<h1>'.$pageTitle.'</h1>';
         if(checkPage($askedPage)){
@@ -61,5 +88,8 @@
         }
     echo "</div>";
     generateHTMLFooter();
-    $dbh = null;
+   
+
+ 
+$dbh = null;
 ?>

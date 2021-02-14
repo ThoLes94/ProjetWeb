@@ -31,13 +31,11 @@ $range_start = parseDateTime($_GET['start']);
 $range_end = parseDateTime($_GET['end']);
 
 // Parse the timeZone parameter if it is present.
-$time_zone = null;
-if (isset($_GET['timeZone'])) {
-  $time_zone = new DateTimeZone($_GET['timeZone']);
-}
+$time_zone = new DateTimeZone('Europe/Paris');
+
 
 // Read and parse our events JSON file into an array of event data arrays.
-$json = file_get_contents('../json/events.json');
+$json = file_get_contents('../json/myfile.json');
 $input_arrays = json_decode($json, true);
 
 // Accumulate an output array of event data arrays.
