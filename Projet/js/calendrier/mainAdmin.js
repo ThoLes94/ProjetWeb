@@ -21,13 +21,13 @@ document.addEventListener('DOMContentLoaded', function() {
             var title = prompt("Nom de l'événement:");
             if (title) {
                 sauver(title, arg.start, arg.end)
-                affiche(arg);
+                affiche(title, arg);
             }
 
             calendar.unselect()
         },
         eventClick: function(arg) {
-            affiche(arg.event)
+            affiche(arg.event.title, arg.event)
         },
         editable: true,
         dayMaxEvents: true, // allow "more" link when too many events
@@ -47,7 +47,7 @@ function descrip_a() {
     $("#descrip").addClass("w3-hide");
 }
 
-function affiche(arg) {
+function affiche(title, arg) {
 
     myDate = arg.start;
     myDate2 = arg.end;
@@ -76,18 +76,19 @@ function affiche(arg) {
     $("#formdate").val(date2);
     $("#formstart").val(hor1);
     $("#formend").val(hor2);
-    $("#banane").val(arg.id);
+    //$("#banane").val(arg.id);
     document.getElementById("banane").value = "test"
-    console.log(arg.id);
-    document.getElementById("idevent2").value = arg.id;
     if (arg.title != undefined) {
-        document.getElementById("nom").innerHTML = arg.title;
-        document.getElementById("formnom").value = arg.title;
+
         $("#formdesc").val(arg.extendedProps.description);
         $("#lieu").val(arg.extendedProps.lieu)
+        document.getElementById("banane").value = arg.id;
+        $("#idevent").val(arg.id);
+        $("#banane").val(arg.id);
     }
+    document.getElementById("nom").innerHTML = title;
+    document.getElementById("formnom").value = title;
     $("#descrip").removeClass("w3-hide");
-    $("#idevent").val(arg.id);
     $("#banane").addClass("w3-hide");
 }
 

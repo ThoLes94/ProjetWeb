@@ -47,7 +47,7 @@ $bytes = file_put_contents("json/myfile.json", $json1);
                 <p>Heure de fin : <input id="formend" type="end" name="end" /></p>
             </div>
             <p> Lieu : <input id="lieu" type="text" name="lieu"> </p>
-            <p><input id="banane" type="text" name="idevent2" required></p>
+            <p><input id="banane" type="text" name="idevent2"></p>
             <input type=submit value="Sauvegarder">
         </form>
         <form action="index.php?todo=removeEvent&page=creerEvenement" method="post">

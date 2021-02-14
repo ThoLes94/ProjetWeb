@@ -53,12 +53,11 @@
         }
     }
     if (isset($_GET['todo']) && $_GET['todo'] == "addEvent") {
-        if (!isset($_POST['idevent2'])){
-            echo 'erreur';
-            return;
+        if (isset($_POST['idevent2'])){
+            $id = $_POST['idevent2'];
+            $test= Event::deleteEvent($dbh, $id);  
         } 
-        $id = $_POST['idevent2'];
-        $test= Event::deleteEvent($dbh, $id);  
+        $id = random_bytes(12);  
         $nom = $_POST['nom'];
         $desc = $_POST['description'];
         $start = new DateTime($_POST['jour'] . ' ' . $_POST['start']);
