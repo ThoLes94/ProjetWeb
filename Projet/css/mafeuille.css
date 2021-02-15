@@ -18,11 +18,9 @@ element {
 
 .callout {
     position: fixed;
-    bottom: 18%;
-    right: 30%;
-    margin-left: auto;
-    margin-top: auto;
-    z-index: 1;
+    top: 0;
+    right: auto;
+    /* margin-top: auto; */
 }
 
 .callout-header {

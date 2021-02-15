@@ -36,7 +36,7 @@ $bytes = file_put_contents("json/myfile.json", $json1);
     </div>
     <span class="closebtn" onclick="descrip_a()">×</span>
     <div class="callout-container form">
-        <form action="index.php?todo=addEvent&page=creerEvenement" method="post">
+        <form action="index.php?todo=addEvent&page=calendrier" method="post">
             <p>Nom de l'événement : <input id="formnom" type="text" name="nom" value="" required /></p>
             <p>Description de l'événement : <input id="formdesc" type="text" name="description" required /></p>
             <p>Jour de l'événement : <input id="formdate" type="date" name="jour" required /></p>
@@ -50,7 +50,7 @@ $bytes = file_put_contents("json/myfile.json", $json1);
             <p><input id="banane" type="text" name="idevent2"></p>
             <input type=submit value="Sauvegarder">
         </form>
-        <form action="index.php?todo=removeEvent&page=creerEvenement" method="post">
+        <form action="index.php?todo=removeEvent&page=calendrier" method="post">
             <span class = "w3-hide"><input id="idevent" type="text" name="idevent" required></span>
             <input type=submit value="Supprimer" style="color:red">
         </form>

@@ -48,7 +48,6 @@ function descrip_a() {
 }
 
 function affiche(title, arg) {
-
     myDate = arg.start;
     myDate2 = arg.end;
     var heure = myDate.getHours() - 1;
