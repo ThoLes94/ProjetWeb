@@ -20,6 +20,7 @@ element {
     position: fixed;
     top: 0;
     right: auto;
+    z-index: 100;
     /* margin-top: auto; */
 }
 

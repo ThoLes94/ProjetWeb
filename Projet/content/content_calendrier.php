@@ -4,7 +4,7 @@ if (!isset($_SESSION["loggedIn"])){
     return;
 }
 
-if (!isset($_SESSION['isAdmin'])){
+if (isset($_SESSION['isAdmin'])){
     require("scripts\content_creerEvenement.php"); 
 } else require("scripts\calendrier.php");
 

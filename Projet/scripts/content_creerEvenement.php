@@ -24,11 +24,12 @@ $json1 = json_encode($array1);
 $bytes = file_put_contents("json/myfile.json", $json1);
 ?>
 
-<div id='script-warning' style="display:none">
-    <code>php/get-events.php</code> must be running.
+<div style="z-index: 2;">
+    <div id='calendar'></div>
 </div>
-<div id='loading'>loading...</div>
-<div id='calendar'></div>
+
+<script src='js/calendrier/mainAdmin.js'></script>
+<script src='lib/locales/fr.js'></script>
 
 <div class="callout w3-hide mx-auto my-auto w3-round" id="descrip">
     <div class="callout-header" id="test">
@@ -51,10 +52,13 @@ $bytes = file_put_contents("json/myfile.json", $json1);
             <input type=submit value="Sauvegarder">
         </form>
         <form action="index.php?todo=removeEvent&page=calendrier" method="post">
-            <span class = "w3-hide"><input id="idevent" type="text" name="idevent" required></span>
+            <span class="w3-hide"><input id="idevent" type="text" name="idevent" required></span>
             <input type=submit value="Supprimer" style="color:red">
         </form>
     </div>
 </div>
-<script src='js/calendrier/mainAdmin.js'></script>
-<script src='lib/locales/fr.js'></script>
+
+<div id='script-warning' style="display:none">
+    <code>php/get-events.php</code> must be running.
+</div>
+<div id='loading'>loading...</div>
