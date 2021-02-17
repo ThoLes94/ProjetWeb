@@ -8,6 +8,7 @@ class Utilisateur {
     public $naissance;
     public $email;
     public $feuille;
+    public $isAdmin;
  
     public function __toString() {
         if($this->promotion==NULL){
@@ -28,9 +29,9 @@ class Utilisateur {
     }
 
     public static function insererUtilisateur($dbh,$login,$mdp,$nom,$prenom,$promotion,$naissance,$email,$feuille){
-        $sth = $dbh->prepare("INSERT INTO `utilisateurs` (`login`, `mdp`, `nom`, `prenom`, `promotion`, `naissance`, `email`, `feuille`) VALUES(?,SHA1(?),?,?,?,?,?,?)");
+        $sth = $dbh->prepare("INSERT INTO `utilisateurs` (`login`, `mdp`, `nom`, `prenom`, `promotion`, `naissance`, `email`, `feuille`, `isAdmin`) VALUES(?,SHA1(?),?,?,?,?,?,?,?)");
         if(Utilisateur::getUtilisateur($dbh,$login) == null){
-            $sth->execute(array($login,$mdp,$nom,$prenom,$promotion,$naissance,$email,$feuille));
+            $sth->execute(array($login,$mdp,$nom,$prenom,$promotion,$naissance,$email,$feuille,NULL));
             return true;
         }
         return false;
@@ -49,6 +50,7 @@ class Utilisateur {
         $result = $sth->fetchAll();
         return $result;
     }
+    
     public static function changePassword($dbh,$login,$newmdp){
         $mdp=SHA1($newmdp);
         $query="UPDATE `utilisateurs` SET `mdp`=? WHERE `login`=?";
@@ -68,7 +70,11 @@ class Utilisateur {
             return true;
         }
         return false;
+    }
 
+    public static function isAdmin($dbh, $login){
+        $user = Utilisateur::getUtilisateur($dbh,$login);
+        return $user->isAdmin;
     }
 }
 ?>

@@ -12,10 +12,13 @@
          "name"=>"inscription",
          "title"=>"Inscription sur le site",
          "menutitle"=>"S'inscrire"),
-
       array(
          "name"=>"inscription_cours",
          "title"=>"Inscription aux différents événements",
+         "menutitle"=>"Evénements"),
+      array(
+         "name"=>"creerEvenement",
+         "title"=>"Ajouter des événements",
          "menutitle"=>"Evénements"),
       array(
          "name"=>"actualites",
@@ -46,6 +49,10 @@
          "title"=>"Mon compte",
          "menutitle"=>""),
       array(
+         "name"=>"calendrier",
+         "title"=>"Nos événements",
+         "menutitle"=>""),
+      array(
          "name"=>"deleteUser",
          "title"=>"Se désinscrire",
          "menutitle"=>"")
@@ -57,6 +64,7 @@
    <head>
       <link href=$chemin rel="stylesheet">
       <link href= "css/w3.css" rel="stylesheet">
+      <link href= "css/mafeuille.css" rel="stylesheet">
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -76,6 +84,8 @@
             border:1px solid  black !important;
          }
       </style>
+      <link href='lib/main.css' rel='stylesheet' />
+      <script src='lib/main.js'></script>
    </head>
 
    <body>

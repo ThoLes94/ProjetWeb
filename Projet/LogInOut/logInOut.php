@@ -9,6 +9,9 @@ function logIn($dbh){
             $_SESSION['login'] = $user->login;
             $_SESSION['prenom']=$user->prenom;
             $_SESSION['nom']=$user->nom;
+            if ($user->isAdmin){
+                $_SESSION['isAdmin']=true;
+            }
         } else $_GET["todo"]= "connexion";
     } else $_GET["todo"]= "connexion";
 }
@@ -18,5 +21,5 @@ function logOut(){
     unset($_SESSION['login']);
     unset($_SESSION['prenom']);
     unset($_SESSION['nom']);
-    $_SESSION['loggedIn']=false;
+    unset($_SESSION['isAdmin']);
 }
