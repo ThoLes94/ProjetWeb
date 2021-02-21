@@ -17,7 +17,7 @@ function printFormRegister(){
     <p>Nom d'utilisateur : <input type="text" name="login" value="<?php echo $login ?>" required /></p>
     <p>Prénom : <input type="text" name="prenom" value="<?php echo $prenom ?>" required /></p>
     <p>Nom : <input type="text" name="nom" value="<?php echo $nom ?>" required /></p>
-    <p>Promotion : <input type="number" name="promotion" value="<?php echo $promostion ?>"/></p>
+    <p>Promotion : <input type="number" name="promotion" value="<?php echo $promotion ?>"/></p>
     <p>Date de naissance : <input type="date" name="naissance" value="<?php echo $naissance ?>" required /></p>
     <p>adresse mail : <input type="email" name="email" value="<?php echo $email ?>" required /></p>
     <p>

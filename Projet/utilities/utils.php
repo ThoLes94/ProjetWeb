@@ -16,6 +16,13 @@
          "name"=>"inscription_cours",
          "title"=>"Inscription aux différents événements",
          "menutitle"=>"Evénements"),
+<<<<<<< HEAD
+=======
+      array(
+         "name"=>"creerEvenement",
+         "title"=>"Ajouter des événements",
+         "menutitle"=>"Evénements"),
+>>>>>>> e507b20f73e386f6915e355adc51bb27dc127672
       array(
          "name"=>"actualites",
          "title"=>"Actualités du binet",
@@ -45,6 +52,10 @@
          "title"=>"Mon compte",
          "menutitle"=>""),
       array(
+         "name"=>"calendrier",
+         "title"=>"Nos événements",
+         "menutitle"=>""),
+      array(
          "name"=>"deleteUser",
          "title"=>"Se désinscrire",
          "menutitle"=>"")
@@ -56,6 +67,7 @@
    <head>
       <link href=$chemin rel="stylesheet">
       <link href= "css/w3.css" rel="stylesheet">
+      <link href= "css/mafeuille.css" rel="stylesheet">
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -75,6 +87,8 @@
             border:1px solid  black !important;
          }
       </style>
+      <link href='lib/main.css' rel='stylesheet' />
+      <script src='lib/main.js'></script>
    </head>
 
    <body>
@@ -178,6 +192,9 @@ CHAINE_DE_FIN;   }
 CHAINE_DE_FIN;
          }
    }
+<<<<<<< HEAD
        
 
+=======
+>>>>>>> e507b20f73e386f6915e355adc51bb27dc127672
 ?>
