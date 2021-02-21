@@ -74,7 +74,7 @@ class Utilisateur {
 
     public static function isAdmin($dbh, $login){
         $user = Utilisateur::getUtilisateur($dbh,$login);
-        return $user->isAdmin;
+        return $user->isAdmin==1;
     }
 }
 ?>

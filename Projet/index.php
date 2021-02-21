@@ -46,7 +46,7 @@
         generateMenu();
     echo "</nav>";
     if (isset($_GET["todo"]) && $_GET["todo"] == "connexion"){
-        if($_SESSION['loggedIn']) {
+        if(isset($_SESSION['loggedIn'])) {
             printLogoutForm();
         } else {
             printLoginForm();
@@ -57,7 +57,7 @@
             $id = $_POST['idevent2'];
             $test= Event::deleteEvent($dbh, $id);  
         } 
-        $id = random_bytes(12);  
+        $id = bin2hex(random_bytes(12) );
         $nom = $_POST['nom'];
         $desc = $_POST['description'];
         $start = new DateTime($_POST['jour'] . ' ' . $_POST['start']);
@@ -66,7 +66,7 @@
         $end = new DateTime($_POST['jour'] . ' ' . $_POST['end']);
         $event = Event::getEvenement($dbh, $id);
         while ($event != false) {
-            $id = random_bytes(12);
+            $id = bin2hex(random_bytes(12));
             $event = Event::getEvenement($dbh, $id);
         }
         Event::insererEvenement($dbh, $id, $nom, $start, $end, $desc, $categorie, $lieu);
