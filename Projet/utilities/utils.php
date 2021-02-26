@@ -87,14 +87,11 @@
       </style>
       <link href='lib/main.css' rel='stylesheet' />
       <script src='lib/main.js'></script>
-<<<<<<< HEAD
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css"/>
       <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
       
       
-=======
       <script src='js/lightbox.js'></script>
->>>>>>> fcd2fd24ddd29f9d3d75e928923e4e56a64e62c4
    </head>
 
    <body>
