@@ -55,19 +55,11 @@
         }
     }
     if (isset($_GET['todo']) && $_GET['todo'] == "addEvent") {
-<<<<<<< Updated upstream
-        if (isset($_POST['idevent'])){
-            $id = $_POST['idevent'];
-            $test= Event::deleteEvent($dbh, $id);  
-        } 
-        $id = bin2hex(random_bytes(12) );
-=======
         $id = bin2hex(random_bytes(12) );
         if (isset($_POST['idevent']) && $_POST['idevent']!='test'){
             $id = $_POST['idevent'];
             $test= Event::deleteEvent($dbh, $id, TRUE);  
         } 
->>>>>>> Stashed changes
         $nom = $_POST['nom'];
         $desc = $_POST['description'];
         $start = new DateTime($_POST['jour'] . ' ' . $_POST['start']);
