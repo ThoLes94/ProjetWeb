@@ -13,7 +13,7 @@ if ($_SESSION["loggedIn"]){
                 echo "<p style='color:#FF0000'> Mot de passe incorrect</p>";
                 printFormEvent($_POST['idevent'],$dbh);
             } else{
-                Database::inscriptionUtilisateur($dbh,$login,$_POST['idevent']);
+                Database::inscriptionUtilisateur($dbh,$login,$_POST['idevent'],$_POST['niveau']);
                 echo "<p> Votre inscription a bien été enregistré ! </p>";
             }
         }

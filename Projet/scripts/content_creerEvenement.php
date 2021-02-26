@@ -31,7 +31,7 @@ $bytes = file_put_contents("json/myfile.json", $json1);
 <script src='js/calendrier/mainAdmin.js'></script>
 <script src='lib/locales/fr.js'></script>
 
-<div class="callout w3-hide mx-auto my-auto w3-round" id="descrip">
+<div class="callout w3-hide mx-auto my-auto w3-round w3-card" id="descrip">
     <div class="callout-header" id="test">
         <p> Evénement : <span id="nom"></span></p>
     </div>
@@ -40,21 +40,23 @@ $bytes = file_put_contents("json/myfile.json", $json1);
         <form action="index.php?todo=addEvent&page=calendrier" method="post">
             <p>Nom de l'événement : <input id="formnom" type="text" name="nom" value="" required /></p>
             <p>Description de l'événement : <input id="formdesc" type="text" name="description" required /></p>
-            <p>Jour de l'événement : <input id="formdate" type="date" name="jour" required /></p>
+            <p>Jour de l'événement : <input id="formdate" type="date" name="jour" class="hasDatepicker" required /></p>
             <div class="col-sm-6">
                 <p>Heure de début : <input id="formstart" type="start" name="start" required /></p>
             </div>
             <div class="col-sm-6">
-                <p>Heure de fin : <input id="formend" type="end" name="end" /></p>
+                <p>Heure de fin : <input id="formend" type="end" name="end" required /></p>
             </div>
-            <p> Lieu : <input id="lieu" type="text" name="lieu"> </p>
-            <p><input id="banane" type="text" name="idevent"></p>
+            <p> Lieu : <input id="lieu" type="text" name="lieu" required> </p>
+            <p><input id="banane" type="text" name="idevent" required></p>
             <input type=submit value="Sauvegarder">
         </form>
-        <form action="index.php?todo=removeEvent&page=calendrier" method="post">
-            <span class="w3-hide"><input id="idevent" type="text" name="idevent" required></span>
-            <input type=submit value="Supprimer" style="color:red">
-        </form>
+        <div id="suppr" class="w3-hide">
+            <form action="index.php?todo=removeEvent&page=calendrier" method="post">
+                <span class="w3-hide"><input id="idevent" type="text" name="idevent" required></span>
+                <input type=submit value="Supprimer" style="color:red">
+            </form>
+        </div>
     </div>
 </div>
 

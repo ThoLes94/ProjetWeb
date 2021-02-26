@@ -134,15 +134,18 @@ class Event
     return false;
   }
 
-  public static function deleteEvent($dbh, $id)
+  public static function deleteEvent($dbh, $id, $suppr)
   {
     $query = "DELETE FROM `evenements` WHERE `id`=?";
     $sth = $dbh->prepare($query);
     if (Event::getEvenement($dbh, $id) != false) {
       $sth->execute(array($id));
-      return true;
-    }
-    return false;
+    } else return false;
+    if ($suppr) return true;
+    $query = "DELETE FROM `inscription` WHERE `id_event`=?";
+    $sth = $dbh->prepare($query);
+    $sth->execute(array($id));
+    return true;
   }
 
   public function __toString()
