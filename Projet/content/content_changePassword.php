@@ -1,6 +1,6 @@
 <?php 
 
-if ($_SESSION["loggedIn"]){
+if (isset($_SESSION["loggedIn"])){
     $login=$_SESSION["login"];
     if (isset($_GET["todo"]) && $_GET["todo"]=="changePassword"){
         if (!isset($_POST["up"]) || !isset($_POST["up2"]) || $_POST["up"]!= $_POST["up2"]){

@@ -10,13 +10,16 @@
          "menutitle"=>"Nous contacter"),
       array(
          "name"=>"inscription",
-         "title"=>"Inscription à nos événements",
+         "title"=>"Inscription sur le site",
          "menutitle"=>"S'inscrire"),
-
       array(
          "name"=>"inscription_cours",
-         "title"=>"Inscription aux ateliers couture",
-         "menutitle"=>"Ateliers couture"),
+         "title"=>"Inscription aux différents événements",
+         "menutitle"=>"Evénements"),
+      array(
+         "name"=>"creerEvenement",
+         "title"=>"Ajouter des événements",
+         "menutitle"=>"Evénements"),
       array(
          "name"=>"actualites",
          "title"=>"Actualités du binet",
@@ -25,6 +28,10 @@
          "name"=>"photos",
          "title"=>"Photos des derniers événements",
          "menutitle"=>"galerie"),
+      array(
+         "name"=>"ajouter_evenement",
+         "title"=>"Ajouter un nouvel événement",
+         "menutitle"=>"Nouvel événement"),
       array(
          "name"=>"base",
          "title"=>"Liste de tous les utilisateurs",
@@ -42,6 +49,10 @@
          "title"=>"Mon compte",
          "menutitle"=>""),
       array(
+         "name"=>"calendrier",
+         "title"=>"Nos événements",
+         "menutitle"=>""),
+      array(
          "name"=>"deleteUser",
          "title"=>"Se désinscrire",
          "menutitle"=>"")
@@ -53,6 +64,8 @@
    <head>
       <link href=$chemin rel="stylesheet">
       <link href= "css/w3.css" rel="stylesheet">
+      <link href= "css/mafeuille.css" rel="stylesheet">
+      <link href= "css/lightbox.css" rel="stylesheet">
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -74,10 +87,14 @@
       </style>
       <link href='lib/main.css' rel='stylesheet' />
       <script src='lib/main.js'></script>
+<<<<<<< HEAD
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css"/>
       <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
       
       
+=======
+      <script src='js/lightbox.js'></script>
+>>>>>>> fcd2fd24ddd29f9d3d75e928923e4e56a64e62c4
    </head>
 
    <body>
@@ -181,6 +198,3 @@ CHAINE_DE_FIN;   }
 CHAINE_DE_FIN;
          }
    }
-       
-
-?>
