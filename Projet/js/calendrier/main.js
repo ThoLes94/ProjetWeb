@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initialView: 'timeGridWeek',
         nowIndicator: true,
         selectMirror: true,
+        allDaySlot: false,
         select: function(arg) {
             var title = prompt('Event Title:');
             if (title) {

@@ -16,13 +16,10 @@
          "name"=>"inscription_cours",
          "title"=>"Inscription aux différents événements",
          "menutitle"=>"Evénements"),
-<<<<<<< HEAD
-=======
       array(
          "name"=>"creerEvenement",
          "title"=>"Ajouter des événements",
          "menutitle"=>"Evénements"),
->>>>>>> e507b20f73e386f6915e355adc51bb27dc127672
       array(
          "name"=>"actualites",
          "title"=>"Actualités du binet",
@@ -192,9 +189,4 @@ CHAINE_DE_FIN;   }
 CHAINE_DE_FIN;
          }
    }
-<<<<<<< HEAD
-       
-
-=======
->>>>>>> e507b20f73e386f6915e355adc51bb27dc127672
 ?>

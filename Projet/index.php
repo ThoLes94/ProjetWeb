@@ -10,16 +10,12 @@
     require "scripts/Database.php";
     require "scripts/Utilisateur.php";
     require "scripts/Evenement.php";
-    require "scripts/Inscription.php";
     require "logInOut/printForms.php";
     require "logInOut/logInOut.php";
     require "register/PrintChangeRegister.php";
-<<<<<<< HEAD
     require "register/PrintEventForm.php";
-=======
     require "scripts/utils.php";
     
->>>>>>> e507b20f73e386f6915e355adc51bb27dc127672
 
     $dbh = Database::connect();
     if(isset($_GET['page'])){
@@ -59,8 +55,8 @@
         }
     }
     if (isset($_GET['todo']) && $_GET['todo'] == "addEvent") {
-        if (isset($_POST['idevent2'])){
-            $id = $_POST['idevent2'];
+        if (isset($_POST['idevent'])){
+            $id = $_POST['idevent'];
             $test= Event::deleteEvent($dbh, $id);  
         } 
         $id = bin2hex(random_bytes(12) );
