@@ -76,5 +76,24 @@ class Utilisateur {
         $user = Utilisateur::getUtilisateur($dbh,$login);
         return $user->isAdmin==1;
     }
+
+    public static function iscrit($dbh, $login){
+        $query = "SELECT id_event FROM `inscription`  WHERE `id_eleve`=?";
+        $sth = $dbh->prepare($query);
+        $sth->setFetchMode();
+        $sth->execute(array($login));
+        $result = $sth->fetchAll();
+        return $result;
+    }
+
+    public static function estInscrit($dbh, $login, $id_event){
+        $result = Utilisateur::iscrit($dbh, $login);
+        foreach( $result as $event){
+            if ($event['id_event']==$id_event){
+                return true;
+            }
+        }
+        return FALSE;
+    }
 }
 ?>

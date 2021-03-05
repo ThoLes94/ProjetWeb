@@ -42,7 +42,7 @@
          "menutitle"=>""),
       array(
          "name"=>"tableau",
-         "title"=>"Amis de ",
+         "title"=>"Liste des événements",
          "menutitle"=>""),
       array(
          "name"=>"changePassword",
@@ -150,7 +150,7 @@ CHAINE_DE_FIN;
                   <a class="nav-link" href="index.php?page=actualites">Actualités</a>
             </li>
             <li class="nav-item">
-                  <a class="nav-link" href="index.php?page=inscription_cours">Ateliers couture</a>
+                  <a class="nav-link" href="index.php?page=calendrier">Ateliers couture</a>
             </li>
             <li class="nav-item">
                   <a class="nav-link" href="index.php?page=photos">Galerie</a>
@@ -158,11 +158,12 @@ CHAINE_DE_FIN;
             <li class="nav-item">
                   <a class="nav-link" href="index.php?page=contacts">Contact</a>
             </li>
-            <li class="nav-item">
-                  <a class="nav-link" href="index.php?page=base">Base de données</a>
-            </li>
-         </ul>
 CHAINE_DE_FIN;
+         if (isset($_SESSION['isAdmin'])){
+            echo ' <li class="nav-item"><a class="nav-link" href="index.php?page=tableau">Base de données</a></li>';
+         }
+           
+         echo '</ul>';
          if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false){
             echo <<<CHAINE_DE_FIN
          <ul class="nav navbar-nav navbar-right">

@@ -3,7 +3,7 @@
 session_name("BananePoire");
 session_start();
 
-if (!isset($_SESSION['loggedIn'])) {
+if (!isset($_SESSION['loggedIn']) ) {
   exit();
 }
 
@@ -18,6 +18,9 @@ if (!isset($_SESSION['loggedIn'])) {
 
 // Require our Event class and datetime utilities
 require 'utils.php';
+require "Database.php";
+
+
 
 // Short-circuit if the client did not give us a date range.
 if (!isset($_GET['start']) || !isset($_GET['end'])) {
@@ -34,9 +37,10 @@ $range_end = parseDateTime($_GET['end']);
 $time_zone = new DateTimeZone('Europe/Paris');
 
 
+
+$dbh = Database::connect();
 // Read and parse our events JSON file into an array of event data arrays.
-$json = file_get_contents('../json/myfile.json');
-$input_arrays = json_decode($json, true);
+$input_arrays = Event::getAllEvenementCall($dbh);
 
 // Accumulate an output array of event data arrays.
 $output_arrays = array();

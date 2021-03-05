@@ -6,12 +6,14 @@ document.addEventListener('DOMContentLoaded', function() {
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
         },
         locale: initialLocaleCode,
         initialDate: Date.now(),
         navLinks: true, // can click day/week names to navigate views
         selectable: true,
+        slotMinTime: '08:00:00',
+        height: "auto",
         timeZone: 'Europe/Paris',
         selectMirror: true,
         initialView: 'timeGridWeek',
