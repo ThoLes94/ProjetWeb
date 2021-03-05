@@ -6,17 +6,20 @@ document.addEventListener('DOMContentLoaded', function() {
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
         },
         locale: initialLocaleCode,
         initialDate: Date.now(),
         navLinks: true, // can click day/week names to navigate views
         selectable: true,
+        slotMinTime: '08:00:00',
+        height: "auto",
         timeZone: 'Europe/Paris',
         selectMirror: true,
         initialView: 'timeGridWeek',
         allDaySlot: false,
         nowIndicator: true,
+        scrollTime: '14:00:00',
         select: function(arg) {
             var title = prompt("Nom de l'événement:");
             if (title) {
@@ -51,8 +54,14 @@ function affiche(title, arg) {
     myDate = arg.start;
     myDate2 = arg.end;
     var heure = myDate.getHours() - 1;
+    if (heure == -1) {
+        heure = 23;
+    }
     var minutes = myDate.getMinutes();
     var heure1 = myDate2.getHours() - 1;
+    if (heure1 == -1) {
+        heure1 = 23;
+    }
     var minutes1 = myDate2.getMinutes();
     var hor1;
     if (heure < 10) hor1 = "0" + heure.toString() + ":";
@@ -76,14 +85,15 @@ function affiche(title, arg) {
     $("#formstart").val(hor1);
     $("#formend").val(hor2);
     //$("#banane").val(arg.id);
-    document.getElementById("banane").value = "test"
+    document.getElementById("banane").value = "test";
+    console.log(arg.title != undefined);
     if (arg.title != undefined) {
-
         $("#formdesc").val(arg.extendedProps.description);
         $("#lieu").val(arg.extendedProps.lieu)
         document.getElementById("banane").value = arg.id;
         $("#idevent").val(arg.id);
         $("#banane").val(arg.id);
+        $("#suppr").removeClass("w3-hide");
     }
     document.getElementById("nom").innerHTML = title;
     document.getElementById("formnom").value = title;

@@ -22,5 +22,12 @@ class Database {
         var_dump($sth);
         $sth->execute(array($login,$mdp,$nom,$prenom,$promotion,$naissance,$email,$feuille));
     }
+
+    public static function inscriptionUtilisateur($dbh, $login, $idEvent, $niveau){
+        $requete = "INSERT INTO `inscription` (`id_eleve`, `id_event`, `niveau`)
+        VALUES (?,?,?);";
+        $sth = $dbh->prepare($requete);
+        $sth->execute(array($login,$idEvent,$niveau));
+    }
 }
 ?>

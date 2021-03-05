@@ -69,7 +69,7 @@ function printFormChange($dbh){
 <input type=submit value="Changer le mot de passe">
 </form>
 <h3> Supprimer mon compte </h3>
-<a href='index.php?page=deleteUser' class='w3-btn '> Supprimer mon compte </a> 
+<a href='index.php?page=deleteUser' class='w3-btn w3-card w3-round'> Supprimer mon compte </a> 
 <?php
 }
 

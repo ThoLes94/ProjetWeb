@@ -113,6 +113,47 @@ class Event
     return $event;
   }
 
+  public static function getAllEvenementTable($dbh)
+  {
+    $query = "SELECT `id`, COUNT(`id_event`)  FROM `evenements` LEFT join inscription on `id`=`id_event` group by `id`";
+    $sth = $dbh->prepare($query);
+    $sth->setFetchMode();
+    $sth->execute();
+    $array1 = array();
+    $arrayEvent = array();
+    while ($toto = $sth->fetch()) {
+      //$arrayEvent[] = new Event($toto);
+      $id = $toto[0];
+      $nb = $toto[1];
+      $event = Event::getEvenement($dbh, $id);
+      $lieu = $event->properties["lieu"];
+      $date = $event->start->format('Y-m-d');
+      $start =  $event->start->format('H:i');
+      $end =  $event->end->format('H:i');
+      $desc = $event->properties["description"];
+      $array1[] = array("id" => $id, "nom" => $event->title, "date" => $date, "start" => $start, "end" => $end, "lieu" => $lieu, "nb" => $nb, "dec" => $desc);
+    }
+    $array2 = array();
+    $array2["data"] = $array1;
+    $json1 = json_encode($array2);
+    return $array2;
+    //file_put_contents("json/table.json", $json1);
+  }
+  public static function getAllEvenementCall($dbh){
+    $query = "SELECT * FROM `evenements` order by  'start', 'end'";
+    $sth = $dbh->prepare($query);
+    $sth->setFetchMode();
+    $sth->execute();
+    $array3 = array();
+    $array3 = $sth->fetchAll();
+    $json1 = json_encode($array3);
+    //file_put_contents("json/myfile.json", $json1);
+    return $array3;
+  }
+    
+    
+  
+
   public static function insererEvenement($dbh, $id, $title, $start, $end, $description, $categorie, $lieu)
   {
     $sth = $dbh->prepare("INSERT INTO `evenements` (`id`,`title`, `start`, `end`, `description`, `categorie`, `lieu`) VALUES(?,?,?,?,?,?,?)");
@@ -134,15 +175,18 @@ class Event
     return false;
   }
 
-  public static function deleteEvent($dbh, $id)
+  public static function deleteEvent($dbh, $id, $suppr)
   {
     $query = "DELETE FROM `evenements` WHERE `id`=?";
     $sth = $dbh->prepare($query);
     if (Event::getEvenement($dbh, $id) != false) {
       $sth->execute(array($id));
-      return true;
-    }
-    return false;
+    } else return false;
+    if ($suppr) return true;
+    $query = "DELETE FROM `inscription` WHERE `id_event`=?";
+    $sth = $dbh->prepare($query);
+    $sth->execute(array($id));
+    return true;
   }
 
   public function __toString()

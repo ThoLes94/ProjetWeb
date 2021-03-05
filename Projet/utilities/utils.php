@@ -42,7 +42,7 @@
          "menutitle"=>""),
       array(
          "name"=>"tableau",
-         "title"=>"Amis de ",
+         "title"=>"Liste des événements",
          "menutitle"=>""),
       array(
          "name"=>"changePassword",
@@ -65,6 +65,7 @@
       <link href=$chemin rel="stylesheet">
       <link href= "css/w3.css" rel="stylesheet">
       <link href= "css/mafeuille.css" rel="stylesheet">
+      <link href= "css/lightbox.css" rel="stylesheet">
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -86,6 +87,11 @@
       </style>
       <link href='lib/main.css' rel='stylesheet' />
       <script src='lib/main.js'></script>
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css"/>
+      <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+      
+      
+      <script src='js/lightbox.js'></script>
    </head>
 
    <body>
@@ -144,7 +150,7 @@ CHAINE_DE_FIN;
                   <a class="nav-link" href="index.php?page=actualites">Actualités</a>
             </li>
             <li class="nav-item">
-                  <a class="nav-link" href="index.php?page=inscription_cours">Ateliers couture</a>
+                  <a class="nav-link" href="index.php?page=calendrier">Ateliers couture</a>
             </li>
             <li class="nav-item">
                   <a class="nav-link" href="index.php?page=photos">Galerie</a>
@@ -152,11 +158,12 @@ CHAINE_DE_FIN;
             <li class="nav-item">
                   <a class="nav-link" href="index.php?page=contacts">Contact</a>
             </li>
-            <li class="nav-item">
-                  <a class="nav-link" href="index.php?page=base">Base de données</a>
-            </li>
-         </ul>
 CHAINE_DE_FIN;
+         if (isset($_SESSION['isAdmin'])){
+            echo ' <li class="nav-item"><a class="nav-link" href="index.php?page=tableau">Base de données</a></li>';
+         }
+           
+         echo '</ul>';
          if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false){
             echo <<<CHAINE_DE_FIN
          <ul class="nav navbar-nav navbar-right">
@@ -189,4 +196,3 @@ CHAINE_DE_FIN;   }
 CHAINE_DE_FIN;
          }
    }
-?>
