@@ -15,7 +15,7 @@ $(document).ready(function() {
         //"pageLength": 15,
 
         "ajax": {
-            "url": 'scripts/get-table.php',
+            "url": 'scripts/get-Eventinscrit.php',
             "dataSrc": "data",
         },
         "columns": [
@@ -25,10 +25,6 @@ $(document).ready(function() {
             { "data": "start" },
             { "data": "end" },
             { "data": "lieu" },
-            {
-                "data": "nb",
-                orderable: false,
-            },
         ],
         "order": [
             [2, 'desc']
@@ -47,7 +43,7 @@ $(document).ready(function() {
             });
             this.api().columns(2).every(function() {
                 var column = this;
-                console.log(column);
+                // console.log(column);
                 var select = $('<select><option value=""></option></select>')
                     .appendTo($(column.footer()).empty())
                     .on('change', function() {
@@ -93,7 +89,7 @@ $(document).ready(function() {
     $('#example tbody').on('click', 'td.details-control', function() {
         var tr = $(this).closest('tr');
         var row = table.row(tr);
-        console.log(row.child);
+        // console.log(row.child);
         /*if ( row.child.isShown() ) {
             // This row is already open - close it
             row.child.hide();
@@ -112,30 +108,29 @@ $(document).ready(function() {
 function dr(d) {
     return '<div class="  mx-auto my-auto w3-round w3-card w3-center" id="descrip">' +
         '<div class="col-lg-2 col-md-1"></div><div class="container form w3-card col-md-10 col-lg-8 w3-roundn w3-center">' +
-        '<form action="index.php?todo=addEvent&page=tableau" method="post">' +
+        '<form action="index.php?todo=addEvent&page=changePassword" method="post">' +
         '<div class="col-md-6">' +
-        '<p>Nom de l\'événement : <input id="formnom" type="text" name="nom" value=' + d.nom + ' required /></p>' +
-        '<p>Description de l\'événement : <input id="formdesc" type="text" name="description" value=' + d.dec + ' required /></p>' +
-        '<p>Jour de l\'événement : <input id="formdate" type="date" name="jour" value=' + d.date + ' class="hasDatepicker" required /></p></div>' +
+        '<p>Nom de l\'événement : <input id="formnom" type="text" name="nom" value=' + d.nom + ' required disabled="disabled"/></p>' +
+        '<p>Description de l\'événement : <input id="formdesc" type="text" name="description" value=' + d.dec + ' required disabled="disabled"/></p>' +
+        '<p>Jour de l\'événement : <input id="formdate" type="date" name="jour" value=' + d.date + ' class="hasDatepicker" required disabled="disabled"/></p></div>' +
         '<div class="col-md-6"><div class="col-sm-6">' +
-        '<p>Heure de début : <input id="formstart" type="start" name="start" value=' + d.start + ' required /></p>' +
+        '<p>Heure de début : <input id="formstart" type="start" name="start" value=' + d.start + ' required disabled="disabled"/></p>' +
         '</div>' +
         '<div class="col-sm-6">' +
-        '<p>Heure de fin : <input id="formend" type="end" name="end" value=' + d.end + ' required /></p>' +
+        '<p>Heure de fin : <input id="formend" type="end" name="end" value=' + d.end + ' required disabled="disabled"/></p>' +
         '</div>' +
-        '<p> Lieu : <input id="lieu" type="text" name="lieu" value=' + d.lieu + ' required> </p>' +
-        '<p class="w3-hide"><input id="banane" type="text" name="idevent" value=' + d.id + '  required></p>' +
-        '<input type=submit value="Sauvegarder" style="color:blue" class="w3-btn my-auto">' +
+        '<p> Lieu : <input id="lieu" type="text" name="lieu" value=' + d.lieu + ' required disabled="disabled"> </p>' +
+        '<p class="w3-hide"><input id="banane" type="text" name="idevent" value=' + d.id + '  required disabled="disabled"></p>' +
         '</div></form>' +
         '<div id="suppr" >' +
-        '<form action="index.php?todo=removeEvent&page=tableau" method="post">' +
-        '<span class="w3-hide"><input id="idevent" type="text" name="idevent" value=' + d.id + '   required></span>' +
-        '<input type=submit value="Supprimer" style="color:red" class="w3-btn">' +
+        '<form action="index.php?todo=removeInscription&page=changePassword" method="post">' +
+        '<span class="w3-hide"><input id="idevent" type="text" name="id_event" value=' + d.id + '   required></span>' +
+        '<span class="w3-hide"><input id="ideleve" type="text" name="id_eleve" value=' + d.id_eleve + ' required></span>' +
+        '<input type=submit value="Se désinscrire" style="color:red" class="w3-btn">' +
         '</form>' +
         '</div>' +
         '</div>' +
-        '</div>' +
-        '<div class="w3-center"><a href=?page=participant&id=' + d.id + ' class="w3-btn w3-round w3-card w3-center w3-margin"> Voir les personnes inscrites</a>';
+        '</div>';
 }
 
 function affiche(title, arg) {
@@ -174,7 +169,7 @@ function affiche(title, arg) {
     $("#formend").val(hor2);
     //$("#banane").val(arg.id);
     document.getElementById("banane").value = "test";
-    console.log(arg.title != undefined);
+    // console.log(arg.title != undefined);
     if (arg.title != undefined) {
         $("#formdesc").val(arg.extendedProps.description);
         $("#lieu").val(arg.extendedProps.lieu)

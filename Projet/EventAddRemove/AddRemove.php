@@ -17,13 +17,17 @@ function addEvent($dbh)
         $id = bin2hex(random_bytes(12));
         $event = Event::getEvenement($dbh, $id);
     }
-    Event::insererEvenement($dbh, $id, $nom, $start, $end, $desc, $categorie, $lieu);
+    return Event::insererEvenement($dbh, $id, $nom, $start, $end, $desc, $categorie, $lieu);
+    
 }
 
 
 function removeEvent($dbh)
 {
-    if (!isset($_POST['idevent'])) echo 'erreur';
+    if (!isset($_POST['idevent'])) {
+        echo 'erreur';
+        return false;
+    }
     $id = $_POST['idevent'];
-    $test = Event::deleteEvent($dbh, $id, FALSE);
+    return Event::deleteEvent($dbh, $id, FALSE);
 }

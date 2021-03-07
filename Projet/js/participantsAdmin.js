@@ -1,34 +1,36 @@
+var id;
+var test;
+var table;
+
 $(document).ready(function() {
     $.fx.off = true;
+    id = $("#select").val();
+    id = "2aecf08d771a4239da9d7622";
     $('#example tfoot th').each(function() {
         var title = $(this).text();
-        if (title == "Nom de l'événement") {
+        if (title == "Email") {
             $(this).html('<input type="text" placeholder="Rechercher ' + title + '" />');
         }
 
     });
-    var table = $('#example').DataTable({
+    table = $('#example').DataTable({
         "language": {
             "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
         },
         //"dom": "tp",
         //"pageLength": 15,
-
         "ajax": {
-            "url": 'scripts/get-table.php',
-            "dataSrc": "data",
+            "url": 'scripts/get-participants.php',
+            data: function(d) {
+                d.id = $('#select').val();
+            }
         },
         "columns": [
-            { "data": "id", "visible": false },
             { "data": "nom" },
-            { "data": "date" },
-            { "data": "start" },
-            { "data": "end" },
-            { "data": "lieu" },
-            {
-                "data": "nb",
-                orderable: false,
-            },
+            { "data": "prenom" },
+            //{ "data": "start" },
+            //{ "data": "end" },
+            { "data": "email" },
         ],
         "order": [
             [2, 'desc']
@@ -105,6 +107,13 @@ $(document).ready(function() {
             tr.addClass('shown');
         }*/
     })
+    $('select').on('change', function() {
+        id = this.value;
+        console.log(id);
+        table.ajax.reload();
+    });
+
+
 
 });
 
@@ -134,8 +143,7 @@ function dr(d) {
         '</form>' +
         '</div>' +
         '</div>' +
-        '</div>' +
-        '<div class="w3-center"><a href=?page=participant&id=' + d.id + ' class="w3-btn w3-round w3-card w3-center w3-margin"> Voir les personnes inscrites</a>';
+        '</div>';
 }
 
 function affiche(title, arg) {
@@ -188,3 +196,9 @@ function affiche(title, arg) {
     $("#descrip").removeClass("w3-hide");
     $("#banane").addClass("w3-hide");
 }
+
+
+
+// setInterval(function() {
+//     table.ajax.reload();
+// }, 300);

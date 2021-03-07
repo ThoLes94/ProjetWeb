@@ -99,6 +99,10 @@ class Event
     return $array;
   }
 
+  public function __toString(){
+    return $this->title." du ".date_format($this->start, 'Y-m-d H:i:s');
+  }
+
   public static function getEvenement($dbh, $id)
   {
     $query = "SELECT * FROM `evenements` WHERE `id`=?";
@@ -150,9 +154,44 @@ class Event
     //file_put_contents("json/myfile.json", $json1);
     return $array3;
   }
-    
-    
-  
+
+  public static function getInscritsEvent($dbh,$id){
+    $query = 'SELECT * FROM `utilisateurs` JOIN `inscription` on `login`=`id_eleve` WHERE `id_event`="'.$id.'"';
+    $event = Event::getEvenement($dbh, $id);
+    $sth = $dbh->prepare($query);
+    $sth->setFetchMode();
+    $sth->execute();
+    $array3 = array();
+    $array3 = $sth->fetchAll();
+    $array2 = array();
+    $array2["data"] = $array3;
+    return $array2;
+  }
+
+  public static function getEventsnonadmin($dbh, $id){
+    $query = 'SELECT `id_event`, `id_eleve`  FROM `evenements` JOIN `inscription` on `id`=`id_event` WHERE `id_eleve`="'.$id.'"';
+    $sth = $dbh->prepare($query);
+    $sth->setFetchMode();
+    $sth->execute();
+    $array1 = array();
+    $arrayEvent = array();
+    while ($toto = $sth->fetch()) {
+      //$arrayEvent[] = new Event($toto);
+      $id = $toto[0];
+      $id_eleve = $toto[1];
+      $event = Event::getEvenement($dbh, $id);
+      $lieu = $event->properties["lieu"];
+      $date = $event->start->format('Y-m-d');
+      $start =  $event->start->format('H:i');
+      $end =  $event->end->format('H:i');
+      $desc = $event->properties["description"];
+      $array1[] = array("id" => $id, "nom" => $event->title, "date" => $date, "start" => $start, "end" => $end, "lieu" => $lieu, "id_eleve" => $id_eleve, "dec" => $desc, );
+    }
+    $array2 = array();
+    $array2["data"] = $array1;
+    $json1 = json_encode($array2);
+    return $array2;
+  }
 
   public static function insererEvenement($dbh, $id, $title, $start, $end, $description, $categorie, $lieu)
   {
@@ -187,11 +226,6 @@ class Event
     $sth = $dbh->prepare($query);
     $sth->execute(array($id));
     return true;
-  }
-
-  public function __toString()
-  {
-    return $this->title . ' ' . $this->properties['id'] . ' ' . date_format($this->start, 'Y-m-d H:i:s');
   }
 }
 

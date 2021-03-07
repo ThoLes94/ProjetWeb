@@ -12,6 +12,6 @@ if (!isset($_SESSION['loggedIn'])) {
 <script src='lib/locales/fr.js'></script>
 
 
-<div class="callout w3-hide mx-auto my-auto w3-round" id="descrip">
+<div class="callout w3-hide mx-auto my-auto w3-round w3-card" style="max-width:60%" id="descrip">
     <?php printFormEventnormal();?>
 </div>

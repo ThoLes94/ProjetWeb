@@ -28,6 +28,7 @@ class Database {
         VALUES (?,?,?);";
         $sth = $dbh->prepare($requete);
         $sth->execute(array($login,$idEvent,$niveau));
+        return true;
     }
 }
 ?>

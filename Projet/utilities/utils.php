@@ -1,64 +1,84 @@
 <?php
-   $page_list = array(
-      array(
-         "name"=>"welcome",
-         "title"=>"Accueil de notre site",
-         "menutitle"=>"Accueil"),
-      array(
-         "name"=>"contacts",
-         "title"=>"Qui sommes-nous ?",
-         "menutitle"=>"Nous contacter"),
-      array(
-         "name"=>"inscription",
-         "title"=>"Inscription sur le site",
-         "menutitle"=>"S'inscrire"),
-      array(
-         "name"=>"inscription_cours",
-         "title"=>"Inscription aux différents événements",
-         "menutitle"=>"Evénements"),
-      array(
-         "name"=>"creerEvenement",
-         "title"=>"Ajouter des événements",
-         "menutitle"=>"Evénements"),
-      array(
-         "name"=>"actualites",
-         "title"=>"Actualités du binet",
-         "menutitle"=>"Actualités"),
-      array(
-         "name"=>"photos",
-         "title"=>"Photos des derniers événements",
-         "menutitle"=>"galerie"),
-      array(
-         "name"=>"ajouter_evenement",
-         "title"=>"Ajouter un nouvel événement",
-         "menutitle"=>"Nouvel événement"),
-      array(
-         "name"=>"base",
-         "title"=>"Liste de tous les utilisateurs",
-         "menutitle"=>""),
-      array(
-         "name"=>"amisde",
-         "title"=>"Amis de ",
-         "menutitle"=>""),
-      array(
-         "name"=>"tableau",
-         "title"=>"Liste des événements",
-         "menutitle"=>""),
-      array(
-         "name"=>"changePassword",
-         "title"=>"Mon compte",
-         "menutitle"=>""),
-      array(
-         "name"=>"calendrier",
-         "title"=>"Nos événements",
-         "menutitle"=>""),
-      array(
-         "name"=>"deleteUser",
-         "title"=>"Se désinscrire",
-         "menutitle"=>"")
-      );
-   function generateHTMLHeader($titre_page, $chemin){
-      echo <<<CHAINE_DE_FIN
+$page_list = array(
+   array(
+      "name" => "welcome",
+      "title" => "Accueil de notre site",
+      "menutitle" => "Accueil"
+   ),
+   array(
+      "name" => "contacts",
+      "title" => "Qui sommes-nous ?",
+      "menutitle" => "Nous contacter"
+   ),
+   array(
+      "name" => "inscription",
+      "title" => "Inscription sur le site",
+      "menutitle" => "S'inscrire"
+   ),
+   array(
+      "name" => "inscription_cours",
+      "title" => "Inscription aux différents événements",
+      "menutitle" => "Evénements"
+   ),
+   array(
+      "name" => "creerEvenement",
+      "title" => "Ajouter des événements",
+      "menutitle" => "Evénements"
+   ),
+   array(
+      "name" => "actualites",
+      "title" => "Actualités du binet",
+      "menutitle" => "Actualités"
+   ),
+   array(
+      "name" => "photos",
+      "title" => "Photos des derniers événements",
+      "menutitle" => "galerie"
+   ),
+   array(
+      "name" => "ajouter_evenement",
+      "title" => "Ajouter un nouvel événement",
+      "menutitle" => "Nouvel événement"
+   ),
+   array(
+      "name" => "base",
+      "title" => "Liste de tous les utilisateurs",
+      "menutitle" => ""
+   ),
+   array(
+      "name" => "amisde",
+      "title" => "Amis de ",
+      "menutitle" => ""
+   ),
+   array(
+      "name" => "tableau",
+      "title" => "Liste des événements",
+      "menutitle" => ""
+   ),
+   array(
+      "name" => "changePassword",
+      "title" => "Mon compte",
+      "menutitle" => ""
+   ),
+   array(
+      "name" => "calendrier",
+      "title" => "Nos événements",
+      "menutitle" => ""
+   ),
+   array(
+      "name" => "deleteUser",
+      "title" => "Se désinscrire",
+      "menutitle" => ""
+   ),
+   array(
+      "name" => "participant",
+      "title" => "Participants aux événements",
+      "menutitle" => ""
+   )
+);
+function generateHTMLHeader($titre_page, $chemin)
+{
+   echo <<<CHAINE_DE_FIN
 <!DOCTYPE html>
 <html lang="fr">
    <head>
@@ -71,6 +91,11 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+      <!-- myAlert -->
+      <link rel="stylesheet" type="text/css" href="css/myalert.min.css" />
+	   <link rel="stylesheet" type="text/css" href="css/myalert-theme.min.css" />
+
       <meta charset="UTF-8"/>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="Victor Mongay et Thomas Lespargot" content="Nom de l'auteur"/>
@@ -95,42 +120,47 @@
    </head>
 
    <body>
+	<script type="text/javascript" src="js/myalert.min.js"></script>
 CHAINE_DE_FIN;
-   }
+}
 
-      
-   function generateHTMLFooter(){
-         echo <<<CHAINE_DE_FIN
+
+function generateHTMLFooter()
+{
+   echo <<<CHAINE_DE_FIN
    </body>
 </html>
 CHAINE_DE_FIN;
-      }
-      
-   
-   function checkPage($askedPage){
-      $authorized = false;
-      global $page_list;
-      foreach($page_list as $page){
-         if($askedPage == $page['name']){
-            $authorized = true;
-      }
-      }   
-      return $authorized;
-   }
+}
 
-   function getPageTitle($askedPage){
-      global $page_list;
-      foreach($page_list as $page){
-         if($askedPage == $page['name']){
-            return($page['title']);
-         }
+
+function checkPage($askedPage)
+{
+   $authorized = false;
+   global $page_list;
+   foreach ($page_list as $page) {
+      if ($askedPage == $page['name']) {
+         $authorized = true;
       }
    }
+   return $authorized;
+}
 
-   function generateMenu(){
-      if (isset($_GET["page"])) $page=$_GET["page"];
-      else $page="welcome";
-      echo <<<CHAINE_DE_FIN
+function getPageTitle($askedPage)
+{
+   global $page_list;
+   foreach ($page_list as $page) {
+      if ($askedPage == $page['name']) {
+         return ($page['title']);
+      }
+   }
+}
+
+function generateMenu()
+{
+   if (isset($_GET["page"])) $page = $_GET["page"];
+   else $page = "welcome";
+   echo <<<CHAINE_DE_FIN
 <nav class="navbar navbar-inverse">
    <div class="container-fluid">
         <div class="navbar-header">
@@ -159,13 +189,13 @@ CHAINE_DE_FIN;
                   <a class="nav-link" href="index.php?page=contacts">Contact</a>
             </li>
 CHAINE_DE_FIN;
-         if (isset($_SESSION['isAdmin'])){
-            echo ' <li class="nav-item"><a class="nav-link" href="index.php?page=tableau">Base de données</a></li>';
-         }
-           
-         echo '</ul>';
-         if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false){
-            echo <<<CHAINE_DE_FIN
+   if (isset($_SESSION['isAdmin'])) {
+      echo ' <li class="nav-item"><a class="nav-link" href="index.php?page=tableau">Base de données</a></li>';
+   }
+
+   echo '</ul>';
+   if (!isset($_SESSION['loggedIn']) || $_SESSION['loggedIn'] == false) {
+      echo <<<CHAINE_DE_FIN
          <ul class="nav navbar-nav navbar-right">
             <li> 
                <form action="index.php?todo=login&page=$page" method='post'>
@@ -182,9 +212,9 @@ CHAINE_DE_FIN;
       </div>
    </div>
 </nav>
-CHAINE_DE_FIN;   }
-         else {
-            echo <<<CHAINE_DE_FIN
+CHAINE_DE_FIN;
+   } else {
+      echo <<<CHAINE_DE_FIN
          <ul class="nav navbar-nav navbar-right">
             <li><a href="index.php?page=changePassword"><span class="glyphicon glyphicon-user"></span> Mon compte </a></li>
             <li><a href="index.php?page=$page&todo=logout"><span class="glyphicon glyphicon-log-in"></span> Se Déconnecter</a></li>
@@ -192,7 +222,7 @@ CHAINE_DE_FIN;   }
       </div>
    </div>
 </nav>
-
 CHAINE_DE_FIN;
-         }
    }
+   echo '<div id="#content" data-myalert></div>';
+}

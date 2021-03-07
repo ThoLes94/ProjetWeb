@@ -67,9 +67,11 @@ class Utilisateur {
         $sth = $dbh->prepare($query);
         if(Utilisateur::getUtilisateur($dbh,$login) != null){
             $sth->execute(array($login));
-            return true;
-        }
-        return false;
+        } else return false;
+        $query="DELETE FROM `inscription` WHERE `id_eleve`=?";
+        $sth = $dbh->prepare($query);
+        $sth->execute(array($login));
+        return true;        
     }
 
     public static function isAdmin($dbh, $login){

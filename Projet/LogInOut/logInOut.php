@@ -12,8 +12,10 @@ function logIn($dbh){
             if ($user->isAdmin==1){
                 $_SESSION['isAdmin']=true;
             }
+            return true;
         } else $_GET["todo"]= "connexion";
     } else $_GET["todo"]= "connexion";
+    return false;
 }
 
 function logOut(){

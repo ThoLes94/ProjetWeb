@@ -84,7 +84,7 @@ function affiche(title, arg) {
     $("#formend").val(hor2);
     //$("#banane").val(arg.id);
     document.getElementById("banane").value = "test";
-    console.log(arg.title != undefined);
+    // console.log(arg.title != undefined);
     if (arg.title != undefined) {
         $("#formdesc").val(arg.extendedProps.description);
         $("#lieu").val(arg.extendedProps.lieu)

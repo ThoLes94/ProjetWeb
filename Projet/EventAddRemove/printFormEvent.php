@@ -39,16 +39,16 @@ function printFormEventnormal(){
     <span class="closebtn" onclick="descrip_a()">×</span>
     <div class="callout-container form  w3-card w3-round">
         <form action="index.php?page=inscription_cours" method="post">
-            <p>Nom de l'événement : <input id="formnom" type="text" name="nom" value="" required disabled="disabled" /></p>
+            <p class="w3-hide">Nom de l'événement : <input id="formnom" type="text" name="nom" value="" required disabled="disabled" /></p>
             <p>Description de l'événement : <input id="formdesc" type="text" name="description" required disabled="disabled" /></p>
-            <p>Jour de l'événement : <input id="formdate" type="date" name="jour" required disabled="disabled" /></p>
+            <div class="col-md-6"><p> Lieu : <input id="lieu" type="text" name="lieu" disabled="disabled"> </p></div>
+            <div class="col-md-6"><p>Jour de l'événement : <input id="formdate" type="date" name="jour" required disabled="disabled" /></p></div>
             <div class="col-sm-6">
                 <p>Heure de début : <input id="formstart" type="start" name="start" required disabled="disabled" /></p>
             </div>
             <div class="col-sm-6">
                 <p>Heure de fin : <input id="formend" type="end" name="end" disabled="disabled" /></p>
             </div>
-            <p> Lieu : <input id="lieu" type="text" name="lieu" disabled="disabled"> </p>
             <p><input id="banane" type="text" name="idevent"></p>
             <input type=submit value="S'inscire" style="background-color:#3788D8">
         </form>
