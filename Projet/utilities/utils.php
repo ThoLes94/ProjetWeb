@@ -68,6 +68,8 @@
    <head>
       <link href=$chemin rel="stylesheet">
       <link href= "css/w3.css" rel="stylesheet">
+      <link href= "css/masonry-docs.css" rel="stylesheet">
+      <link href= "css/image-picker.css" rel="stylesheet">
       <link href= "css/mafeuille.css" rel="stylesheet">
       <link href= "css/lightbox.css" rel="stylesheet">
       <!-- Bootstrap CSS -->

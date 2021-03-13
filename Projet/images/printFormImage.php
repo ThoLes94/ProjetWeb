@@ -2,7 +2,7 @@
 function printFormImage(){
    echo <<<CHAINE_DE_FIN
 <form action="?page=upload&todo=upload" method="post" enctype="multipart/form-data">
-   <input type="file" name="fichier"/>
+   <input type="file" name="fichier[]" multiple accept=".jpg,.jpeg" id='file'/>
    <br>
    <input type="date" name="date"/>
    <p>Legende : <input type="text" name="legende"/></p>

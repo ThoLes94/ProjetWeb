@@ -1,6 +1,11 @@
-<h2>Créez votre compte chez nous</h2>
+
 <?php
 $form_value_valid=false;
+if(isset($_SESSION['loggedIn'])){
+    echo "<script> location.href = 'index.php'</script>";
+    exit();
+}
+echo "<h2>Créez votre compte chez nous</h2>";
 
 if(isset($_POST["prenom"]) && $_POST["prenom"] != "" 
 && isset($_POST["nom"]) && $_POST["nom"] != "" 
