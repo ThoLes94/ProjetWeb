@@ -29,6 +29,10 @@
          "title"=>"Photos des derniers événements",
          "menutitle"=>"galerie"),
       array(
+         "name"=>"upload",
+         "title"=>"Ajoutez des fichiers au site",
+         "menutitle"=>"Ajout de fichiers"),
+      array(
          "name"=>"ajouter_evenement",
          "title"=>"Ajouter un nouvel événement",
          "menutitle"=>"Nouvel événement"),

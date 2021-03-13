@@ -1,6 +1,21 @@
 <h2>Découvrez les photos des derniers événements</h2>
-<h3>Merci au binet Photo et au JTX pour leur couverture</h3>
+<h3>Merci au binet Photo pour leur couverture</h3>
 
-<a href="images/logo styl'X.jpg" data-lightbox="show-1" data-title="matin"><img src="images/logo styl'X.jpg" alt="explication alternative"></a>
 
-<a href="images/logo styl'X-réduit.jpg" data-lightbox="show-1" data-title="midi"><img src="images/logo styl'X-réduit.jpg" alt="explication alternative"></a>
+<?php
+$query = "SELECT * FROM `images` ORDER BY `date` AND `id` ";
+$sth = $dbh->prepare($query);
+$sth->setFetchMode();
+$sth->execute();
+$array1 =$sth->fetchall();
+// echo var_dump($array1);
+foreach ($array1 as $i){
+    $id=$i[0];
+    $data = $i[1];
+    $date = $i[2];
+    $src ="images/actis/activite-photo-".$id.".jpg";
+    // echo $src;
+    echo "<a href=$src data-lightbox='show-1' data-title=$data><img src=$src alt=$data width='20%'></a>";
+}
+
+    ?>

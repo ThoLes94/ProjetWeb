@@ -15,6 +15,8 @@
     require "register/PrintChangeRegister.php";
     require "register/PrintEventForm.php";
     require "scripts/utils.php";
+    require "scripts/Image.php";
+    require "images/printFormImage.php";
     
 
     $dbh = Database::connect();
