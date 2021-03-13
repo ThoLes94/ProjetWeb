@@ -23,17 +23,13 @@ if (isset($_SESSION["loggedIn"])) {
             }
         }
     }
-    if (isset($_GET["todo"]) && $_GET['todo'] == "removeInscription") {
-        if (Inscription::removeInscription($dbh, $_POST['id_eleve'], $_POST["id_event"])) {
-            echo "<h3> Vous avez été désinscrit </h3>";
-        } else echo "<h1>Erreur</h1>";
-    }
+    
     echo "<div class='container w3-margin'><a onclick='showTable()' class='w3-btn w3-round w3-card'>Voir mes inscriptions</a></div>";
     echo <<<CHAINE
         <div id="table" class="w3-hide">
     <div class="demo-html">
         <div>
-            <table class="display table table-striped table-bordered" id="example" style="max-width:80%   cellspacing='0'">
+            <table class="display table table-striped table-bordered" id="example" style="max-width:80%; cellspacing='0'">
                 <thead>
                     <tr>
                         <th></th>

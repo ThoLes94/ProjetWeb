@@ -19,7 +19,7 @@ class Inscription
     {
         $query = "DELETE FROM `inscription` WHERE `id_eleve`=? AND `id_event`=?";
         $sth = $dbh->prepare($query);
-        if (Inscription::getInscription($dbh, $id_eleve, $id_event) != false) {
+        if (Inscription::getInscription($dbh, $id_eleve, $id_event) != null) {
             $sth->execute(array($id_eleve, $id_event));
             $sth->closeCursor();
             return true;

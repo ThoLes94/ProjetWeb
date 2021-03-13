@@ -114,22 +114,22 @@ function dr(d) {
         '<div class="col-lg-2 col-md-1"></div><div class="container form w3-card col-md-10 col-lg-8 w3-roundn w3-center">' +
         '<form action="index.php?todo=addEvent&page=tableau" method="post">' +
         '<div class="col-md-6">' +
-        '<p>Nom de l\'événement : <input id="formnom" type="text" name="nom" value=' + d.nom + ' required /></p>' +
-        '<p>Description de l\'événement : <input id="formdesc" type="text" name="description" value=' + d.dec + ' required /></p>' +
+        '<p>Nom de l\'événement : <input id="formnom" type="text" name="nom" value=\"' + d.nom + '\" required /></p>' +
+        '<p>Description de l\'événement : <input id="formdesc" type="text" name="description" value=\"' + d.dec + '\" required /></p>' +
         '<p>Jour de l\'événement : <input id="formdate" type="date" name="jour" value=' + d.date + ' class="hasDatepicker" required /></p></div>' +
         '<div class="col-md-6"><div class="col-sm-6">' +
-        '<p>Heure de début : <input id="formstart" type="start" name="start" value=' + d.start + ' required /></p>' +
+        '<p>Heure de début : <input id="formstart" type="time" name="start" value=' + d.start + ' required /></p>' +
         '</div>' +
         '<div class="col-sm-6">' +
-        '<p>Heure de fin : <input id="formend" type="end" name="end" value=' + d.end + ' required /></p>' +
+        '<p>Heure de fin : <input id="formend" type="time" name="end" value=' + d.end + ' required /></p>' +
         '</div>' +
-        '<p> Lieu : <input id="lieu" type="text" name="lieu" value=' + d.lieu + ' required> </p>' +
-        '<p class="w3-hide"><input id="banane" type="text" name="idevent" value=' + d.id + '  required></p>' +
+        '<p> Lieu : <input id="lieu" type="text" name="lieu" value=\"' + d.lieu + '\" required> </p>' +
+        '<p class="w3-hide"><input id="banane" type="text" name="idevent" value=\"' + d.id + '\"  required></p>' +
         '<input type=submit value="Sauvegarder" style="color:blue" class="w3-btn my-auto">' +
         '</div></form>' +
         '<div id="suppr" >' +
         '<form action="index.php?todo=removeEvent&page=tableau" method="post">' +
-        '<span class="w3-hide"><input id="idevent" type="text" name="idevent" value=' + d.id + '   required></span>' +
+        '<span class="w3-hide"><input id="idevent" type="text" name="idevent" value=\"' + d.id + '\"   required></span>' +
         '<input type=submit value="Supprimer" style="color:red" class="w3-btn">' +
         '</form>' +
         '</div>' +

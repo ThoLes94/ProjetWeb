@@ -17,6 +17,7 @@ require "scripts/utils.php";
 require "EventAddRemove/AddRemove.php";
 require "EventAddRemove/printFormEvent.php";
 require "scripts/inscription.php";
+require "register/addRemoveParticipants.php";
 
 
 $dbh = Database::connect();
@@ -53,6 +54,11 @@ if (isset($_GET["todo"]) && $_GET["todo"] == "connexion") {
     } else {
         printLoginForm();
     }
+}
+if (isset($_GET["todo"]) && $_GET['todo'] == "removeInscription") {
+    if (Inscription::removeInscription($dbh, $_POST['id_eleve'], $_POST["id_event"])) {
+        echo '<script> myAlert("Désinscription <i>éffectuée</i>", "myalert-success")</script>';
+    } else echo '<script> myAlert("Désinscription <i>échouée</i>", "myalert-danger")</script>';
 }
 if (isset($_GET['todo']) && $_GET['todo'] == "addEvent") {
     if (addEvent($dbh)) {

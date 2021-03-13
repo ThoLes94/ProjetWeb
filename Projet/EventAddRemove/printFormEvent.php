@@ -11,10 +11,10 @@ function printFormEventAdmin(){
             <p>Description de l'événement : <input id="formdesc" type="text" name="description" required /></p>
             <p>Jour de l'événement : <input id="formdate" type="date" name="jour" class="hasDatepicker" required /></p>
             <div class="col-sm-6">
-                <p>Heure de début : <input id="formstart" type="start" name="start" required /></p>
+                <p>Heure de début : <input id="formstart" type="time" name="start" required /></p>
             </div>
             <div class="col-sm-6">
-                <p>Heure de fin : <input id="formend" type="end" name="end" required /></p>
+                <p>Heure de fin : <input id="formend" type="time" name="end" required /></p>
             </div>
             <p> Lieu : <input id="lieu" type="text" name="lieu" required> </p>
             <p><input id="banane" type="text" name="idevent" required></p>
@@ -44,10 +44,10 @@ function printFormEventnormal(){
             <div class="col-md-6"><p> Lieu : <input id="lieu" type="text" name="lieu" disabled="disabled"> </p></div>
             <div class="col-md-6"><p>Jour de l'événement : <input id="formdate" type="date" name="jour" required disabled="disabled" /></p></div>
             <div class="col-sm-6">
-                <p>Heure de début : <input id="formstart" type="start" name="start" required disabled="disabled" /></p>
+                <p>Heure de début : <input id="formstart" type="time" name="start" required disabled="disabled" /></p>
             </div>
             <div class="col-sm-6">
-                <p>Heure de fin : <input id="formend" type="end" name="end" disabled="disabled" /></p>
+                <p>Heure de fin : <input id="formend" type="time" name="end" disabled="disabled" /></p>
             </div>
             <p><input id="banane" type="text" name="idevent"></p>
             <input type=submit value="S'inscire" style="background-color:#3788D8">

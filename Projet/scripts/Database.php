@@ -24,6 +24,8 @@ class Database {
     }
 
     public static function inscriptionUtilisateur($dbh, $login, $idEvent, $niveau){
+        if (Utilisateur::getUtilisateur($dbh, $login)==null) return false;
+        if ( Inscription::getInscription($dbh, $login, $idEvent)) return false;
         $requete = "INSERT INTO `inscription` (`id_eleve`, `id_event`, `niveau`)
         VALUES (?,?,?);";
         $sth = $dbh->prepare($requete);

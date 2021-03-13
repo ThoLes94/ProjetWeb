@@ -113,7 +113,7 @@ function generateHTMLHeader($titre_page, $chemin)
       <link href='lib/main.css' rel='stylesheet' />
       <script src='lib/main.js'></script>
       <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css"/>
-      <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
+      <script src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
       
       
       <script src='js/lightbox.js'></script>

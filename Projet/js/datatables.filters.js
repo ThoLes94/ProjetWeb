@@ -34,24 +34,33 @@ $.fn.dataTable.Api.register('filtersOn()', function() {
         var searchable = dataTable.context[0].aoColumns[index].bSearchable;
         var searchtype = dataTable.context[0].aoColumns[index].searchtype;
 
-        // Add input only if current column is searchable
-        if (searchable) {
-
-            if (searchtype == "select") {
-
-                // Select input
-                var select = $('<select><option value=""></option></select>').addClass('form-control input-sm');
-                dataTable.column(index).data().unique().sort().each(function(d, j) {
-                    select.append('<option value="' + d + '">' + d + '</option>')
-                });
-
-                $('#' + id + ' .filter tr').append($('<th>').append(select));
-            } else {
-                // Text input
-                $('#' + id + ' .filter tr').append($('<th>').append($('<input type="text"/>').addClass('form-control input-sm')));
-            }
+        if (index == 3) {
+            var select = $('<select><option value=""></option></select>').addClass('form-control input-sm');
+            select.append('<option value="Débutant">Débutant</option>');
+            select.append('<option value="Intermédiaire">Intermédiaire</option>');
+            select.append('<option value="Fort">Fort</option>');
+            $('#' + id + ' .filter tr').append($('<th>').append(select));
         } else {
-            $('#' + id + ' .filter tr').append($('<th>'));
+
+            // Add input only if current column is searchable
+            if (searchable) {
+
+                if (searchtype == "select") {
+
+                    // Select input
+                    var select = $('<select><option value=""></option></select>').addClass('form-control input-sm');
+                    dataTable.column(index).data().unique().sort().each(function(d, j) {
+                        select.append('<option value="' + d + '">' + d + '</option>')
+                    });
+
+                    $('#' + id + ' .filter tr').append($('<th>').append(select));
+                } else {
+                    // Text input
+                    $('#' + id + ' .filter tr').append($('<th>').append($('<input type="text"/>').addClass('form-control input-sm')));
+                }
+            } else {
+                $('#' + id + ' .filter tr').append($('<th>'));
+            }
         }
     });
 
