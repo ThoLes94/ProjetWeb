@@ -25,7 +25,6 @@ function addEvent($dbh)
 function removeEvent($dbh)
 {
     if (!isset($_POST['idevent'])) {
-        echo 'erreur';
         return false;
     }
     $id = $_POST['idevent'];

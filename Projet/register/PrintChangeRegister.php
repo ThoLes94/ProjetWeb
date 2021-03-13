@@ -17,12 +17,12 @@ function printFormRegister()
 <div class="col-md-3"></div>
 <div class="form col-md-6  w3-card w3-round">
     <form action="index.php?todo=register&page=inscription" method="post" oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
-        <p>Nom d'utilisateur : <input type="text" name="login" value="<?php echo $login ?>" required /></p>
-        <div class="col-md-6"><p>Prénom : <input type="text" name="prenom" value="<?php echo $prenom ?>" required /></p></div>
-        <div class="col-md-6"><p>Nom : <input type="text" name="nom" value="<?php echo $nom ?>" required /></p></div>
-        <div class="col-md-6"><p>Promotion : <input type="number" name="promotion" value="<?php echo $promotion ?>" /></p></div>
-        <div class="col-md-6"><p>Date de naissance : <input type="date" name="naissance" value="<?php echo $naissance ?>" required /></p></div>
-        <p>adresse mail : <input type="email" name="email" value="<?php echo $email ?>" required /></p>
+        <p>Nom d'utilisateur : <input type="text" name="login" value="<?php echo htmlspecialchars($login) ?>" required /></p>
+        <div class="col-md-6"><p>Prénom : <input type="text" name="prenom" value="<?php echo htmlspecialchars($prenom) ?>" required /></p></div>
+        <div class="col-md-6"><p>Nom : <input type="text" name="nom" value="<?php echo htmlspecialchars($nom)?>" required /></p></div>
+        <div class="col-md-6"><p>Promotion : <input type="number" name="promotion" value="<?php echo htmlspecialchars($promotion) ?>" /></p></div>
+        <div class="col-md-6"><p>Date de naissance : <input type="date" name="naissance" value="<?php echo htmlspecialchars($naissance) ?>" required /></p></div>
+        <p>adresse mail : <input type="email" name="email" value="<?php echo htmlspecialchars($email) ?>" required /></p>
         <div class="col-md-6"><p>
             <label for="password1">Password:</label>
             <input id="password1" type=password required name=up>
@@ -93,7 +93,7 @@ function printFormChange($dbh)
 
 function printFormDeletingAccount()
 {
-    $prenom = $_SESSION['prenom'];
+    $prenom = htmlspecialchars($_SESSION['prenom']);
     echo "<p> Bonjour $prenom, </p>";
     echo "<p> Nous sommes tristes de vous voir partir, remplissez le formulaire ci-dessous pour valider votre désinscription </p>";
 ?>

@@ -78,6 +78,7 @@ $.fn.dataTable.Api.register('filtersOn()', function() {
 
     // Filter input event : filter matching column
     $('#' + id + ' .filter input, #' + id + ' .filter select').each(function(index) {
+        if (index >= 2) index++;
         $(this).on('keyup change', function() {
             dataTable.column(index).search(this.value).draw();
         });

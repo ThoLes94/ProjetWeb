@@ -13,7 +13,7 @@ if (isset($_SESSION["loggedIn"])) {
             echo "<p style='color:red' > Vous êtes déjà inscrit à cette événement! </p>";
             echo '<p> Vous pouvez retourner voir les événements en cliquant ici:</p>';
             echo '<div class="w3-center"><a class="w3-button w3-card w3-round w3-margin" href="?page=calendrier">Retouner au Calendrier</a> <a class="w3-button w3-card w3-round w3-margin" href="?page=changePassword">Accéder à mes inscriptions</a> </div>';
-        } else printFormEvent($_POST['idevent'], $dbh);
+        } else printFormEvent(htmlspecialchars($_POST['idevent']), $dbh);
     }
 } else echo "<p>Connectez vous pour vous inscrire</p>";
 

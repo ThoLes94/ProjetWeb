@@ -26,12 +26,12 @@ if (!$form_value_valid) {
  
 ?>
 <form action="index.php?todo=register&page=register" method="post" oninput="up2.setCustomValidity(up2.value != up.value ? 'Les mots de passe diffèrent.' : '')">
-<p>Nom d'utilisateur : <input type="text" name="login" value="<?php echo $login ?>" required /></p>
-<p>Prénom : <input type="text" name="prenom" value="<?php echo $prenom ?>" required /></p>
-<p>Nom : <input type="text" name="nom" value="<?php echo $nom ?>" required /></p>
-<p>Promotion : <input type="number" name="promotion" value="<?php echo $promostion ?>"/></p>
-<p>Date de naissance : <input type="date" name="naissance" value="<?php echo $naissance ?>" required /></p>
-<p>adresse mail : <input type="email" name="email" value="<?php echo $email ?>" required /></p>
+<p>Nom d'utilisateur : <input type="text" name="login" value="<?php echo htmlspecialchars($login) ?>" required /></p>
+<p>Prénom : <input type="text" name="prenom" value="<?php echo htmlspecialchars($prenom) ?>" required /></p>
+<p>Nom : <input type="text" name="nom" value="<?php echo htmlspecialchars($nom) ?>" required /></p>
+<p>Promotion : <input type="number" name="promotion" value="<?php echo htmlspecialchars($promostion) ?>"/></p>
+<p>Date de naissance : <input type="date" name="naissance" value="<?php echo htmlspecialchars($naissance) ?>" required /></p>
+<p>adresse mail : <input type="email" name="email" value="<?php echo htmlspecialchars($email) ?>" required /></p>
 <p>
     <label for="password1">Password:</label>
     <input id="password1" type=password required name=up>

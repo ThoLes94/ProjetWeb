@@ -21,7 +21,7 @@ element {
     top: 0;
     right: auto;
     z-index: 100;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     /* max-height: 100%; */
     width: 600px;
     height: 485px;
@@ -44,7 +44,9 @@ element {
 .callout-container {
     padding: 15px;
     background-color: #ccc;
-    color: black
+    color: black;
+    overflow-y: scroll;
+    max-height: 100%;
 }
 
 .closebtn {

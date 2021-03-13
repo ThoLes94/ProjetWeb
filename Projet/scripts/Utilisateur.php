@@ -41,15 +41,15 @@ class Utilisateur {
         return strcmp(SHA1($mdp), $user->mdp)== 0;
     }
 
-    public function getAmis($dbh){
-        $login=$this->login;
-        $query = "SELECT * FROM `utilisateurs` JOIN `amis` ON `login` = `login2` WHERE `login1`=?";
-        $sth = $dbh->prepare($query);
-        $sth->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
-        $sth->execute(array($login));
-        $result = $sth->fetchAll();
-        return $result;
-    }
+    // public function getAmis($dbh){
+    //     $login=$this->login;
+    //     $query = "SELECT * FROM `utilisateurs` JOIN `amis` ON `login` = `login2` WHERE `login1`=?";
+    //     $sth = $dbh->prepare($query);
+    //     $sth->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
+    //     $sth->execute(array($login));
+    //     $result = $sth->fetchAll();
+    //     return $result;
+    // }
     
     public static function changePassword($dbh,$login,$newmdp){
         $mdp=SHA1($newmdp);

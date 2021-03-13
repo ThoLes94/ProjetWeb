@@ -3,7 +3,7 @@
 if (isset($_SESSION["loggedIn"])) {
     echo "<script src=js/moncompte.js></script>";
     $user = Utilisateur::getUtilisateur($dbh, $_SESSION['login']);
-    $prenom = $user->prenom;
+    $prenom = htmlspecialchars($user->prenom);
     echo "<div><p> Bonjour $prenom,<br> Ici vous avez accès à toutes vos inscriptions et à la gestion de votre compte";
     $login = $_SESSION["login"];
     if (isset($_GET["todo"]) && $_GET["todo"] == "changePassword") {

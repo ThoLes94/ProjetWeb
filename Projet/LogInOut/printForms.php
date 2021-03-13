@@ -2,7 +2,7 @@
 function printLoginForm(){
     $var="welcome";
     if(isset($_GET['page'])){
-        $var=$_GET['page'];
+        $var=htmlspecialchars($_GET['page']);
     }
     echo "<div class='container'>";
     if (isset($_POST["login"])) echo "<p style='color:#FF0000'>Mauvais login ou mot de passe</p>";
