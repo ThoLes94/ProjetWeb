@@ -17,7 +17,7 @@ if (isset($_GET["todo"]) && $_GET["todo"] == "inscription_cours") {
 echo <<<CHAINE
 <div>
     <select id="select" name="id"> 
-</div>
+
 CHAINE;
 $input_arrays = Event::getAllEvenementCall($dbh);
 
@@ -28,13 +28,13 @@ for ($i = 0; $i < count($input_arrays); ++$i) {
     if (isset($_GET['id']) && $_GET['id'] == $id) {
         $select = ' selected="selected"';
     }
-    echo "<option value=$id $select>$event</option>";
+    echo "<option value=$id $select label=\"$event\"></option>";
 } ?>
-</select>
+</select> </div>
 <div>
     <div class="demo-html">
         <div>
-            <table class="display table table-striped table-bordered" id="example" style="max-width:80%   cellspacing='0'">
+            <table class="display table table-striped table-bordered" id="example" style="max-width:100% ; ">
                 <thead>
                     <tr>
                         <th>Nom</th>

@@ -19,6 +19,7 @@ element {
 .callout {
     position: fixed;
     top: 0;
+    max-height: 100%;
     right: auto;
     z-index: 100;
     /* overflow-y: scroll; */

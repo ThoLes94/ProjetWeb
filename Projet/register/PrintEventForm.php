@@ -47,7 +47,7 @@ function printFormaddParticipant()
             </select>
         </p></div>
         </div>
-        <p class="w3-center row">Mot de passe : <input type="password" name="mdp" required name='mdp' style="width:70%" /></p>
+        <p class="w3-center row">Mot de passe : <input type="password" required name='mdp' style="width:70%" /></p>
         <span class="w3-hide"><input id="idevent" type="text" name="idevent"  required></span>
         
         <p><input type="submit" value="Valider" class="w3-btn" style="color:blue"/></p>

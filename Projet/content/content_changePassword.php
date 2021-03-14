@@ -4,7 +4,7 @@ if (isset($_SESSION["loggedIn"])) {
     echo "<script src=js/moncompte.js></script>";
     $user = Utilisateur::getUtilisateur($dbh, $_SESSION['login']);
     $prenom = htmlspecialchars($user->prenom);
-    echo "<div><p> Bonjour $prenom,<br> Ici vous avez accès à toutes vos inscriptions et à la gestion de votre compte";
+    echo "<div><p> Bonjour $prenom,<br> Ici vous avez accès à toutes vos inscriptions et à la gestion de votre compte</p></div>";
     $login = $_SESSION["login"];
     if (isset($_GET["todo"]) && $_GET["todo"] == "changePassword") {
         if (!isset($_POST["up"]) || !isset($_POST["up2"]) || $_POST["up"] != $_POST["up2"]) {
@@ -26,10 +26,10 @@ if (isset($_SESSION["loggedIn"])) {
     
     echo "<div class='container w3-margin'><a onclick='showTable()' class='w3-btn w3-round w3-card'>Voir mes inscriptions</a></div>";
     echo <<<CHAINE
-        <div id="table" class="w3-hide">
+<div id="table" class="w3-hide">
     <div class="demo-html">
         <div>
-            <table class="display table table-striped table-bordered" id="example" style="max-width:80%; cellspacing='0'">
+            <table class="display table table-striped table-bordered" id="example" style="max-width:100%;">
                 <thead>
                     <tr>
                         <th></th>
@@ -52,7 +52,6 @@ if (isset($_SESSION["loggedIn"])) {
                 </tfoot>
             </table>
         </div>
-
     </div>
 </div>
 

@@ -14,10 +14,13 @@ require "logInOut/logInOut.php";
 require "register/PrintChangeRegister.php";
 require "register/PrintEventForm.php";
 require "scripts/utils.php";
+require "scripts/Image.php";
+require "images/printFormImage.php";
+require "addremovephoto/AddRemove.php";
 require "EventAddRemove/AddRemove.php";
 require "EventAddRemove/printFormEvent.php";
-require "scripts/inscription.php";
 require "register/addRemoveParticipants.php";
+require "scripts/inscription.php";
 
 
 $dbh = Database::connect();
@@ -55,23 +58,44 @@ if (isset($_GET["todo"]) && $_GET["todo"] == "connexion") {
         printLoginForm();
     }
 }
-if (isset($_GET["todo"]) && $_GET['todo'] == "removeInscription") {
-    if (Inscription::removeInscription($dbh, $_POST['id_eleve'], $_POST["id_event"])) {
-        echo '<script> myAlert("Désinscription <i>éffectuée</i>", "myalert-success")</script>';
-    } else echo '<script> myAlert("Désinscription <i>échouée</i>", "myalert-danger")</script>';
-}
-if (isset($_GET['todo']) && $_GET['todo'] == "addEvent") {
-    if (addEvent($dbh)) {
-        echo '<script> myAlert("Evénement <i>sauvegardé</i>", "myalert-success")</script>';
-    } else echo '<script> myAlert("Sauvegarde <i>échouée</i>", "myalert-danger")</script>';
+
+if (isset($_SESSION['loggedIn']) && isset($_GET['todo'])) {
+    if (isset($_GET["todo"]) && $_GET['todo'] == "removeInscription") {
+        if (Inscription::removeInscription($dbh, $_POST['id_eleve'], $_POST["id_event"])) {
+            echo '<script> myAlert("Désinscription <i>éffectuée</i>", "myalert-success")</script>';
+        } else echo '<script> myAlert("Désinscription <i>échouée</i>", "myalert-danger")</script>';
+    }
+    if (isset($_GET['todo']) && $_GET['todo'] == "addEvent") {
+        if (addEvent($dbh)) {
+            echo '<script> myAlert("Evénement <i>sauvegardé</i>", "myalert-success")</script>';
+        } else echo '<script> myAlert("Sauvegarde <i>échouée</i>", "myalert-danger")</script>';
+    }
+
+    if (isset($_GET['todo']) && $_GET['todo'] == "removeEvent") {
+        if (removeEvent($dbh)) {
+            echo '<script> myAlert("Suppression <i>réussie</i>", "myalert-success")</script>';
+        } else echo '<script> myAlert("Suppression <i>échouée</i>", "myalert-danger")</script>';
+    }
+    if ($_GET["todo"] == "removePhoto") {
+        if (isset($_POST["select"])) {
+            foreach ($_POST["select"] as $id) {
+                removePhoto($id, $dbh);
+            }
+        }
+    }
+    if ($_GET["todo"] == "upload") {
+        if (isset($_FILES['fichier'])) {
+            foreach ($_FILES['fichier']['tmp_name'] as $file) {
+                if (addPhotos($dbh, $file)) {
+                    echo '<script> myAlert("Ajout <i>réussi</i>", "myalert-success")</script>';
+                } else echo '<script> myAlert("Ajout <i>échoué</i>", "myalert-danger")</script>';
+            }
+        }
+    }
 }
 
-if (isset($_GET['todo']) && $_GET['todo'] == "removeEvent") {
-    if (removeEvent($dbh)) {
-        echo '<script> myAlert("Suppression <i>réussie</i>", "myalert-success")</script>';
-    } else echo '<script> myAlert("Suppression <i>échouée</i>", "myalert-danger")</script>';
-}
-echo "<div class='container' id = 'content'>";
+
+echo "<div class='container'>";
 echo '<h1>' . $pageTitle . '</h1>';
 if (checkPage($askedPage)) {
     require('content/content_' . $askedPage . '.php');

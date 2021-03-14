@@ -16,6 +16,11 @@ $page_list = array(
       "menutitle" => "S'inscrire"
    ),
    array(
+      "name" => "upload",
+      "title" => "Ajoutez des fichiers au site",
+      "menutitle" => "Ajout de fichiers"
+   ),
+   array(
       "name" => "inscription_cours",
       "title" => "Inscription aux différents événements",
       "menutitle" => "Evénements"
@@ -46,11 +51,6 @@ $page_list = array(
       "menutitle" => ""
    ),
    array(
-      "name" => "amisde",
-      "title" => "Amis de ",
-      "menutitle" => ""
-   ),
-   array(
       "name" => "tableau",
       "title" => "Liste des événements",
       "menutitle" => ""
@@ -76,6 +76,8 @@ $page_list = array(
       "menutitle" => ""
    )
 );
+
+
 function generateHTMLHeader($titre_page, $chemin)
 {
    echo <<<CHAINE_DE_FIN
@@ -84,6 +86,8 @@ function generateHTMLHeader($titre_page, $chemin)
    <head>
       <link href=$chemin rel="stylesheet">
       <link href= "css/w3.css" rel="stylesheet">
+      <link href= "css/masonry-docs.css" rel="stylesheet">
+      <link href= "css/image-picker.css" rel="stylesheet">
       <link href= "css/mafeuille.css" rel="stylesheet">
       <link href= "css/lightbox.css" rel="stylesheet">
       <!-- Bootstrap CSS -->
@@ -96,7 +100,6 @@ function generateHTMLHeader($titre_page, $chemin)
       <link rel="stylesheet" type="text/css" href="css/myalert.min.css" />
 	   <link rel="stylesheet" type="text/css" href="css/myalert-theme.min.css" />
 
-      <meta charset="UTF-8"/>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="Victor Mongay et Thomas Lespargot" content="Nom de l'auteur"/>
       <meta name="keywords" content="Mots clefs relatifs à cette page"/>
@@ -120,7 +123,7 @@ function generateHTMLHeader($titre_page, $chemin)
    </head>
 
    <body>
-	<script type="text/javascript" src="js/myalert.min.js"></script>
+	<script src="js/myalert.min.js"></script>
 CHAINE_DE_FIN;
 }
 
@@ -224,5 +227,5 @@ CHAINE_DE_FIN;
 </nav>
 CHAINE_DE_FIN;
    }
-   echo '<div id="#content" data-myalert></div>';
+   echo '<div id="content" data-myalert></div>';
 }

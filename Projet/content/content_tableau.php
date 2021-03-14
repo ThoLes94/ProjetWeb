@@ -8,7 +8,7 @@ if (!isset($_SESSION['loggedIn']) || !isset($_SESSION['isAdmin'])) {
 <div>
     <div class="demo-html">
         <div>
-            <table class="display table table-striped table-bordered" id="example" style="max-width:80%   cellspacing='0'">
+            <table class="display table table-striped table-bordered" id="example" style="max-width:100% ">
                 <thead>
                     <tr>
                         <th></th>

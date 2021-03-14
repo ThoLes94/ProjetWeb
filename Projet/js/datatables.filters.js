@@ -35,7 +35,7 @@ $.fn.dataTable.Api.register('filtersOn()', function() {
         var searchtype = dataTable.context[0].aoColumns[index].searchtype;
 
         if (index == 3) {
-            var select = $('<select><option value=""></option></select>').addClass('form-control input-sm');
+            var select = $('<select><option label=""></option></select>').addClass('form-control input-sm');
             select.append('<option value="Débutant">Débutant</option>');
             select.append('<option value="Intermédiaire">Intermédiaire</option>');
             select.append('<option value="Fort">Fort</option>');
