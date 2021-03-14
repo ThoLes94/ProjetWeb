@@ -26,24 +26,9 @@ $page_list = array(
       "menutitle" => "Evénements"
    ),
    array(
-      "name" => "creerEvenement",
-      "title" => "Ajouter des événements",
-      "menutitle" => "Evénements"
-   ),
-   array(
-      "name" => "actualites",
-      "title" => "Actualités du binet",
-      "menutitle" => "Actualités"
-   ),
-   array(
       "name" => "photos",
       "title" => "Photos des derniers événements",
       "menutitle" => "galerie"
-   ),
-   array(
-      "name" => "ajouter_evenement",
-      "title" => "Ajouter un nouvel événement",
-      "menutitle" => "Nouvel événement"
    ),
    array(
       "name" => "base",
@@ -180,9 +165,6 @@ function generateMenu()
                   <a class="nav-link" href="index.php?page=welcome">Accueil <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                  <a class="nav-link" href="index.php?page=actualites">Actualités</a>
-            </li>
-            <li class="nav-item">
                   <a class="nav-link" href="index.php?page=calendrier">Ateliers couture</a>
             </li>
             <li class="nav-item">
@@ -193,7 +175,8 @@ function generateMenu()
             </li>
 CHAINE_DE_FIN;
    if (isset($_SESSION['isAdmin'])) {
-      echo ' <li class="nav-item"><a class="nav-link" href="index.php?page=tableau">Base de données</a></li>';
+      echo ' <li class="nav-item"><a class="nav-link" href="index.php?page=tableau">Liste des événements</a></li>';
+      echo ' <li class="nav-item"><a class="nav-link" href="index.php?page=base">Liste des utilisateurs</a></li>';
    }
 
    echo '</ul>';
