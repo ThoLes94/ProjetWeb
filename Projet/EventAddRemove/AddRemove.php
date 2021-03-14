@@ -14,10 +14,11 @@ function addEvent($dbh)
     $end = new DateTime($_POST['jour'] . ' ' . $_POST['end']);
     $event = Event::getEvenement($dbh, $id);
     while ($event != false) {
+        // génération de l'id
         $id = bin2hex(random_bytes(12));
         $event = Event::getEvenement($dbh, $id);
     }
-    return Event::insererEvenement($dbh, $id, $nom, $start, $end, $desc, $categorie, $lieu);
+    return Database::insererEvenement($dbh, $id, $nom, $start, $end, $desc, $categorie, $lieu);
     
 }
 

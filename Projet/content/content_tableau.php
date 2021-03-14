@@ -11,7 +11,6 @@ if (!isset($_SESSION['loggedIn']) || !isset($_SESSION['isAdmin'])) {
             <table class="display table table-striped table-bordered" id="example" style="max-width:100% ">
                 <thead>
                     <tr>
-                        <th></th>
                         <th>Nom de l'événement</th>
                         <th>Date</th>
                         <th>Heure de début</th>
@@ -22,7 +21,6 @@ if (!isset($_SESSION['loggedIn']) || !isset($_SESSION['isAdmin'])) {
                 </thead>
                 <tfoot>
                     <tr>
-                        <th></th>
                         <th>Nom de l'événement</th>
                         <th>Date</th>
                         <th>Heure de début</th>
@@ -37,13 +35,16 @@ if (!isset($_SESSION['loggedIn']) || !isset($_SESSION['isAdmin'])) {
     </div>
 </div>
 
+<div class="col-md-3"></div>
+<div id="ajout" class="w3-hide col-md-6">
+    <?php
+    printFormEventAdmin()
+    ?>
+</div>
 
 
-
-
-
-<div class="w3-center">
-    <a class="w3-button w3-card w3-round" href="?page=calendrier"> Calendrier</a>
+<div class="justify-content-center">
+<div><a type=submit value="Ajouter un évenement" style="color:green" class="w3-btn w3-card w3-round w3-margin" onclick="remplir()">Ajouter un évenement</a><a  class="w3-button w3-card w3-round" href="?page=calendrier">Accéder au Calendrier</a></div>
 </div>
 <script src="js/admin.js"></script>
-<script src="js/datatables.filters.js"></script>
+<!-- <script src="js/datatables.filters.js"></script> -->

@@ -21,11 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
         nowIndicator: true,
         scrollTime: '14:00:00',
         select: function(arg) {
-            var title = prompt("Nom de l'événement:");
-            if (title) {
-                sauver(title, arg.start, arg.end)
-                affiche(title, arg);
-            }
+            // sauver(title, arg.start, arg.end)
+            affiche(null, arg);
+
 
             calendar.unselect()
         },
@@ -35,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         editable: true,
         dayMaxEvents: true, // allow "more" link when too many events
         events: {
-            url: 'scripts/get-events.php',
+            url: 'routes/get-events.php',
         },
         loading: function(bool) {
             document.getElementById('loading').style.display =
@@ -51,54 +49,56 @@ function descrip_a() {
 }
 
 function affiche(title, arg) {
-    myDate = arg.start;
-    myDate2 = arg.end;
-    var heure = myDate.getHours() - 1;
-    if (heure == -1) {
-        heure = 23;
-    }
-    var minutes = myDate.getMinutes();
-    var heure1 = myDate2.getHours() - 1;
-    if (heure1 == -1) {
-        heure1 = 23;
-    }
-    var minutes1 = myDate2.getMinutes();
-    var hor1;
-    if (heure < 10) hor1 = "0" + heure.toString() + ":";
-    else {
-        hor1 = heure.toString() + ":";
-    }
-    if (minutes < 10) {
-        hor1 += "0" + minutes.toString();
-    } else hor1 += minutes.toString();
-    $("#formstart").val(hor1);
+    if (arg != null) {
+        myDate = arg.start;
+        myDate2 = arg.end;
+        var heure = myDate.getHours() - 1;
+        if (heure == -1) {
+            heure = 23;
+        }
+        var minutes = myDate.getMinutes();
+        var heure1 = myDate2.getHours() - 1;
+        if (heure1 == -1) {
+            heure1 = 23;
+        }
+        var minutes1 = myDate2.getMinutes();
+        var hor1;
+        if (heure < 10) hor1 = "0" + heure.toString() + ":";
+        else {
+            hor1 = heure.toString() + ":";
+        }
+        if (minutes < 10) {
+            hor1 += "0" + minutes.toString();
+        } else hor1 += minutes.toString();
+        $("#formstart").val(hor1);
 
-    if (heure1 < 10) hor2 = "0" + heure1.toString() + ":";
-    else {
-        hor2 = heure1.toString() + ":";
+        if (heure1 < 10) hor2 = "0" + heure1.toString() + ":";
+        else {
+            hor2 = heure1.toString() + ":";
+        }
+        if (minutes1 < 10) {
+            hor2 += "0" + minutes1.toString();
+        } else hor2 += minutes1.toString();
+        var date2 = myDate.toISOString().substring(0, 10);
+        $("#formdate").val(date2);
+        $("#formstart").val(hor1);
+        $("#formend").val(hor2);
+        //$("#banane").val(arg.id);
+        document.getElementById("banane").value = "test";
+        // console.log(arg.title != undefined);
+        if (arg.title != undefined) {
+            $("#formdesc").val(arg.extendedProps.description);
+            $("#lieu").val(arg.extendedProps.lieu)
+            document.getElementById("banane").value = arg.id;
+            $("#idevent").val(arg.id);
+            $("#banane").val(arg.id);
+            $("#suppr").removeClass("w3-hide");
+        }
+        document.getElementById("nom").innerHTML = title;
+        document.getElementById("formnom").value = title;
+        $("#descrip").removeClass("w3-hide");
+        $("#banane").addClass("w3-hide");
     }
-    if (minutes1 < 10) {
-        hor2 += "0" + minutes1.toString();
-    } else hor2 += minutes1.toString();
-    var date2 = myDate.toISOString().substring(0, 10);
-    $("#formdate").val(date2);
-    $("#formstart").val(hor1);
-    $("#formend").val(hor2);
-    //$("#banane").val(arg.id);
-    document.getElementById("banane").value = "test";
-    console.log(arg.title != undefined);
-    if (arg.title != undefined) {
-        $("#formdesc").val(arg.extendedProps.description);
-        $("#lieu").val(arg.extendedProps.lieu)
-        document.getElementById("banane").value = arg.id;
-        $("#idevent").val(arg.id);
-        $("#banane").val(arg.id);
-        $("#suppr").removeClass("w3-hide");
-    }
-    document.getElementById("nom").innerHTML = title;
-    document.getElementById("formnom").value = title;
-    $("#descrip").removeClass("w3-hide");
-    $("#banane").addClass("w3-hide");
 }
 
 function sauver(title, start, end) {

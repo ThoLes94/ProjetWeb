@@ -10,7 +10,7 @@ $(document).ready(function() {
         //"dom": "tp",
         //"pageLength": 15,
         "ajax": {
-            "url": 'scripts/get-participants.php',
+            "url": 'routes/get-participants.php',
             data: function(d) {
                 d.id = $('#select').val();
             }
@@ -95,7 +95,7 @@ function remplir() {
 
 function dr(d) {
     var id = $("#select").val();
-    console.log('<form action="index.php?todo=removeInscription&page=participant&id=' + id + '" method="post">')
+    // console.log('<form action="index.php?todo=removeInscription&page=participant&id=' + id + '" method="post">')
     return '<div class="  mx-auto my-auto w3-round w3-card w3-center " id="descrip">' +
         '<div class="col-lg-2 col-md-1"></div><div class="container w3-padding form w3-card col-md-10 col-lg-8 w3-round w3-center">' +
         '<div id="suppr" >' +

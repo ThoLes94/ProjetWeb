@@ -17,8 +17,8 @@ if (!isset($_SESSION['loggedIn']) ) {
 //--------------------------------------------------------------------------------------------------
 
 // Require our Event class and datetime utilities
-require 'utils.php';
-require "Database.php";
+require '../scripts/utils.php';
+require "../scripts/Database.php";
 
 
 

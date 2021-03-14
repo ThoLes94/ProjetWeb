@@ -15,7 +15,7 @@ $(document).ready(function() {
         //"pageLength": 15,
 
         "ajax": {
-            "url": 'scripts/get-Eventinscrit.php',
+            "url": 'routes/get-Eventinscrit.php',
             "dataSrc": "data",
         },
         "columns": [

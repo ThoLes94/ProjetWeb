@@ -6,8 +6,8 @@ session_start();
 if (!isset($_SESSION['loggedIn']) || !isset($_SESSION['isAdmin'])) {
   exit();
 }
-require 'Database.php';
-require 'utils.php';
+require '../scripts/utils.php';
+require "../scripts/Database.php";
 
 
 $dbh= Database::connect();

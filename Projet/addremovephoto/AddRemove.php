@@ -14,7 +14,7 @@ function addPhotos($dbh, $file)
             // JPEG => type=2
             if ($type == 3 || $type == 2) {
                 $id = Image::compterImages($dbh) + 1;
-                if (move_uploaded_file($file, 'images/actis/activite-photo-' . $id . '.jpg')) {
+                if (move_uploaded_file($file, 'images/actis/activite-photo-' . $id . '.JPEG')) {
                     creerCopie($id);
                     if (Image::insererImage($dbh, $id, $_POST['legende'], $_POST['date'])) {
                         return true;
@@ -33,8 +33,9 @@ function addPhotos($dbh, $file)
 
 function creerCopie($id)
 {
-    $photoHD = 'images/actis/activite-photo-' . $id . '.jpg';
-    $newWidth = 100;
+    try{
+    $photoHD = 'images/actis/activite-photo-' . $id . '.JPEG';
+    $newWidth = 200;
 
     // $photoHD est le chemin vers votre photo HD
 
@@ -48,15 +49,18 @@ function creerCopie($id)
     imagecopyresampled($tmpPhotoLD, $image, 0, 0, 0, 0, $newWidth, $newHeight, $widthOrig, $heightOrig);
 
     // $photoLD est le chemin vers votre nouvelle photo LD
-    $photoLD = 'images/actis/activite-photo-' . $id . '_copy.jpg';
-    imagejpeg($tmpPhotoLD, $photoLD, 100);
+    $photoLD = 'images/actis/activite-photo-' . $id . '_copy.JPEG';
+    imagejpeg($tmpPhotoLD, $photoLD, 100);}
+    catch(Exception $e){
+
+    }
 }
 
 function removePhoto($id,$dbh)
 {
     try {
-        $src1 = "images/actis/activite-photo-" . $id . ".jpg";
-        $src2 = "images/actis/activite-photo-" . $id . "_copy.jpg";
+        $src1 = "images/actis/activite-photo-" . $id . ".JPEG";
+        $src2 = "images/actis/activite-photo-" . $id . "_copy.JPEG";
         if (Image::suppImage($id, $dbh)) {
             unlink($src1);
             unlink($src2);

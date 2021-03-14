@@ -18,14 +18,14 @@ if (!isset($_SESSION['isAdmin'])) {
         $id = $i[0];
         $data = $i[1];
         $date = $i[2];
-        $src1 = "images/actis/activite-photo-" . $id . ".jpg";
-        $src2 = "images/actis/activite-photo-" . $id . "_copy.jpg";
+        $src1 = "images/actis/activite-photo-" . $id . ".JPEG";
+        $src2 = "images/actis/activite-photo-" . $id . "_copy.JPEG";
 
         // echo $src;
         if ($data != '') {
-            echo "<a href=$src1 data-lightbox='show-1' data-title=$data><img src=$src2 alt=$id></a>";
+            echo "<a href=$src1 data-lightbox='show-1' data-title=$data><img src=$src2 alt=$id loading=\"lazy\"></a>";
         } else {
-            echo "<a href=$src1 data-lightbox='show-1' ><img src=$src2 alt=$id></a>";
+            echo "<a href=$src1 data-lightbox='show-1' ><img src=$src2 alt=$id loading=\"lazy\"></a>";
         }
     }
     echo "</div></div>";
@@ -39,15 +39,15 @@ if (!isset($_SESSION['isAdmin'])) {
         $data = $i[1];
         $date = $i[2];
         // echo $src;
-        $src1 = "images/actis/activite-photo-" . $id . ".jpg";
-        $src2 = "images/actis/activite-photo-" . $id . "_copy.jpg";
+        $src1 = "images/actis/activite-photo-" . $id . ".JPEG";
+        $src2 = "images/actis/activite-photo-" . $id . "_copy.JPEG";
 
         // echo $src;
 
         if ($data != '') {
-            echo "<a href=$src1 data-lightbox='show-1' data-title=$data><img src=$src2 alt=$id></a>";
+            echo "<a href=$src1 data-lightbox='show-1' data-title=$data><img src=$src2 alt=$id loading=\"lazy\"></a>";
         } else {
-            echo "<a href=$src1 data-lightbox='show-1' ><img src=$src2 alt=$id></a>";
+            echo "<a href=$src1 data-lightbox='show-1' ><img src=$src2 alt=$id loading=\"lazy\"></a>";
         }
     }
     echo "</div></div>";
@@ -58,10 +58,10 @@ if (!isset($_SESSION['isAdmin'])) {
         $id = $i[0];
         $data = $i[1];
         $date = $i[2];
-        $src = "images/actis/activite-photo-" . $id . "_copy.jpg";
+        $src = "images/actis/activite-photo-" . $id . "_copy.JPEG";
         // echo $src;
         echo <<<CHAINE_DE_FIN
-            <option data-img-src=$src value=$id>$id</option>
+            <option data-img-src=$src value=$id loading=\"lazy\">$id</option>
         
 CHAINE_DE_FIN;
     }

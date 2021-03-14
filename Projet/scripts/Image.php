@@ -31,12 +31,12 @@ class image
 
     public static function compterImages($dbh)
     {
-        $query  = "SELECT * FROM `images`";
+        $query  = "SELECT * FROM `images` ORDER BY `id` DESC";
         $sth = $dbh->prepare($query);
         $sth->execute();
         $count = $sth->fetchall();
         if ($count==null) return 0;
-        $count = (int) end($count)[0];
+        $count = (int) $count[0]["id"];
         // echo $count;
         return $count;
         // return $sth;

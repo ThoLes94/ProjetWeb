@@ -32,5 +32,15 @@ class Database {
         $sth->execute(array($login,$idEvent,$niveau));
         return true;
     }
+
+    public static function insererEvenement($dbh, $id, $title, $start, $end, $description, $categorie, $lieu)
+    {
+      $sth = $dbh->prepare("INSERT INTO `evenements` (`id`,`title`, `start`, `end`, `description`, `categorie`, `lieu`) VALUES(?,?,?,?,?,?,?)");
+      if (Event::getEvenement($dbh, $id) == null && Event::getEvenementbyDateandTitle($dbh, $start->format('Y-m-d H:i:s'), $title)==false) {
+        $sth->execute(array($id, $title, $start->format('Y-m-d H:i:s'), $end->format('Y-m-d H:i:s'), $description, $categorie, $lieu));
+        return true;
+      }
+      return false;
+    }
 }
 ?>

@@ -17,7 +17,7 @@ function printFormEventAdmin(){
                 <p>Heure de fin : <input id="formend" type="time" name="end" required /></p>
             </div>
             <p> Lieu : <input id="lieu" type="text" name="lieu" required> </p>
-            <p><input id="banane" type="text" name="idevent" required></p>
+            <p><input id="banane" type="text" name="idevent"></p>
             <input type=submit value="Sauvegarder">
         </form>
         <div id="suppr" class="w3-hide">

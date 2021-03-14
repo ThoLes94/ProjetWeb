@@ -15,11 +15,11 @@ $(document).ready(function() {
         //"pageLength": 15,
 
         "ajax": {
-            "url": 'scripts/get-table.php',
+            "url": 'routes/get-table.php',
             "dataSrc": "data",
         },
         "columns": [
-            { "data": "id", "visible": false },
+            // { "data": "id", "visible": false },
             { "data": "nom" },
             { "data": "date" },
             { "data": "start" },
@@ -45,9 +45,8 @@ $(document).ready(function() {
                     }
                 });
             });
-            this.api().columns(2).every(function() {
+            this.api().columns(1).every(function() {
                 var column = this;
-                console.log(column);
                 var select = $('<select><option value=""></option></select>')
                     .appendTo($(column.footer()).empty())
                     .on('change', function() {
@@ -90,21 +89,6 @@ $(document).ready(function() {
             tr.addClass('shown');
         }
     });
-    $('#example tbody').on('click', 'td.details-control', function() {
-        var tr = $(this).closest('tr');
-        var row = table.row(tr);
-        console.log(row.child);
-        /*if ( row.child.isShown() ) {
-            // This row is already open - close it
-            row.child.hide();
-            tr.removeClass('shown');
-        }
-        else {
-            // Open this row
-            row.child( format(row.data()) ).show();
-            tr.addClass('shown');
-        }*/
-    })
 
 });
 
@@ -174,7 +158,7 @@ function affiche(title, arg) {
     $("#formend").val(hor2);
     //$("#banane").val(arg.id);
     document.getElementById("banane").value = "test";
-    console.log(arg.title != undefined);
+    // console.log(arg.title != undefined);
     if (arg.title != undefined) {
         $("#formdesc").val(arg.extendedProps.description);
         $("#lieu").val(arg.extendedProps.lieu)
@@ -187,4 +171,15 @@ function affiche(title, arg) {
     document.getElementById("formnom").value = title;
     $("#descrip").removeClass("w3-hide");
     $("#banane").addClass("w3-hide");
+}
+
+function remplir() {
+    $("#ajout").removeClass("w3-hide");
+    $("#banane").addClass("w3-hide");
+    document.getElementById("banane").value = "test";
+    //$("#add").attr('action', 'index.php?todo=inscription_cours&page=participant&id=' + $('select').val());
+}
+
+function descrip_a() {
+    $("#ajout").addClass("w3-hide");
 }

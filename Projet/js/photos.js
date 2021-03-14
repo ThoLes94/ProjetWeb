@@ -1,8 +1,5 @@
 $(document).ready(function() {
     $("select").imagepicker()
-    $('select').on('change', function() {
-        console.log($('select').val());
-    });
 })
 
 function select() {

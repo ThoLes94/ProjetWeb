@@ -64,8 +64,8 @@ for ($i = 0; $i < count($input_arrays); ++$i) {
 </div>
 
 
-    <div class="w3-center">
-        <a class="w3-button w3-card w3-round" href="?page=calendrier"> Calendrier</a>
+    <div class="justify-content-center w3-center">
+    <div><a class="w3-button w3-card w3-round w3-margin" href="?page=tableau">Voir les événements</a><a class="w3-button w3-card w3-round" href="?page=calendrier">Accéder au Calendrier</a></div>
     </div>
     <script src="js/participantsAdmin.js"></script>
     <script src="js/datatables.filters.js"></script>

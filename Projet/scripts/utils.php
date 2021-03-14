@@ -77,7 +77,6 @@ class Event
   // Converts this Event object back to a plain data array, to be used for generating JSON
   public function toArray()
   {
-
     // Start with the misc properties (don't worry, PHP won't affect the original array)
     $array = $this->properties;
 
@@ -108,6 +107,19 @@ class Event
     $query = "SELECT * FROM `evenements` WHERE `id`=?";
     $sth = $dbh->prepare($query);
     $sth->execute(array($id));
+    $array = $sth->fetch();
+    $sth->closeCursor();
+    if ($array == null) {
+      return false;
+    }
+    $event = new Event($array);
+    return $event;
+  }
+
+  public static function getEvenementbyDateandTitle($dbh, $date, $title){
+    $query = "SELECT * FROM `evenements` WHERE `title`=? AND `start`=?";
+    $sth = $dbh->prepare($query);
+    $sth->execute(array($title, $date));
     $array = $sth->fetch();
     $sth->closeCursor();
     if ($array == null) {
@@ -193,15 +205,7 @@ class Event
     return $array2;
   }
 
-  public static function insererEvenement($dbh, $id, $title, $start, $end, $description, $categorie, $lieu)
-  {
-    $sth = $dbh->prepare("INSERT INTO `evenements` (`id`,`title`, `start`, `end`, `description`, `categorie`, `lieu`) VALUES(?,?,?,?,?,?,?)");
-    if (Event::getEvenement($dbh, $id) == null) {
-      $sth->execute(array($id, $title, $start->format('Y-m-d H:i:s'), $end->format('Y-m-d H:i:s'), $description, $categorie, $lieu));
-      return true;
-    }
-    return false;
-  }
+
 
   public static function changeDate($dbh, $id, $newStart, $newEnd)
   {
