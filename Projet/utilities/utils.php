@@ -165,7 +165,7 @@ function generateMenu()
                   <a class="nav-link" href="index.php?page=welcome">Accueil <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                  <a class="nav-link" href="index.php?page=calendrier">Ateliers couture</a>
+                  <a class="nav-link" href="index.php?page=calendrier">Evénements</a>
             </li>
             <li class="nav-item">
                   <a class="nav-link" href="index.php?page=photos">Galerie</a>
