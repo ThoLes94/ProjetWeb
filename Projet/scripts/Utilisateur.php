@@ -16,7 +16,7 @@ class Utilisateur {
         } else {
             $promotion= " X".$this->promotion.", ";
         }
-        return "[".$this->login."] ".$this->prenom." <B>".$this->nom."</B>, né le ".explode ( "-" ,$this->naissance )[2]."/".explode ( "-" ,$this->naissance )[1]."/".explode ( "-" ,$this->naissance )[0].", ".$promotion." <B>".$this->email."</B>, <a href='index.php?page=amisde&login=$this->login'>Voir ses amis</a>";
+        return "[".$this->login."] ".$this->prenom." <B>".$this->nom."</B>, né le ".explode ( "-" ,$this->naissance )[2]."/".explode ( "-" ,$this->naissance )[1]."/".explode ( "-" ,$this->naissance )[0].", ".$promotion." <B>".$this->email."</B>";
     }
     public static function getUtilisateur($dbh,$login){
         $query = "SELECT * FROM `utilisateurs` WHERE `login`=?";

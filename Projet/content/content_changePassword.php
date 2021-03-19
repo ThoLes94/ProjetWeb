@@ -63,6 +63,6 @@ CHAINE;
     printFormChange($dbh);
     echo "</div>";
 } else {
-    echo "<p> Connectez vous pour pouvoir changer votre mot de passe </p>";
+    echo "<p> Connectez vous pour pouvoir changer votre mot de passe et avoir accès à vos inscriptions.</p>";
     printLoginForm();
 }
