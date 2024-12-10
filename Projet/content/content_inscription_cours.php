@@ -11,12 +11,15 @@ if ($_SESSION["loggedIn"]){
         } else{
             if (!Utilisateur::testerMdp($dbh,$user,$_POST['mdp'])){
                 echo "<p style='color:#FF0000'> Mot de passe incorrect</p>";
-                printEventForm();
+                printFormEvent($_POST['idevent'],$dbh);
             } else{
-                insererInscription($id_evenement,$login)
+                Database::inscriptionUtilisateur($dbh,$login,$_POST['idevent'],$_POST['niveau']);
+                echo "<p> Votre inscription a bien été enregistré ! </p>";
             }
-    } else printFormDeletingAccount();
+        }
+    } else printFormEvent($_POST['idevent'],$dbh);
 
 } else echo "<p>Connectez vous pour vous inscrire</p>";
+
     ?>
 

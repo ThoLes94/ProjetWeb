@@ -12,10 +12,13 @@
          "name"=>"inscription",
          "title"=>"Inscription sur le site",
          "menutitle"=>"S'inscrire"),
-
       array(
          "name"=>"inscription_cours",
          "title"=>"Inscription aux différents événements",
+         "menutitle"=>"Evénements"),
+      array(
+         "name"=>"creerEvenement",
+         "title"=>"Ajouter des événements",
          "menutitle"=>"Evénements"),
       array(
          "name"=>"actualites",
@@ -25,6 +28,10 @@
          "name"=>"photos",
          "title"=>"Photos des derniers événements",
          "menutitle"=>"galerie"),
+      array(
+         "name"=>"upload",
+         "title"=>"Ajoutez des fichiers au site",
+         "menutitle"=>"Ajout de fichiers"),
       array(
          "name"=>"ajouter_evenement",
          "title"=>"Ajouter un nouvel événement",
@@ -46,6 +53,10 @@
          "title"=>"Mon compte",
          "menutitle"=>""),
       array(
+         "name"=>"calendrier",
+         "title"=>"Nos événements",
+         "menutitle"=>""),
+      array(
          "name"=>"deleteUser",
          "title"=>"Se désinscrire",
          "menutitle"=>"")
@@ -57,6 +68,10 @@
    <head>
       <link href=$chemin rel="stylesheet">
       <link href= "css/w3.css" rel="stylesheet">
+      <link href= "css/masonry-docs.css" rel="stylesheet">
+      <link href= "css/image-picker.css" rel="stylesheet">
+      <link href= "css/mafeuille.css" rel="stylesheet">
+      <link href= "css/lightbox.css" rel="stylesheet">
       <!-- Bootstrap CSS -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -76,6 +91,9 @@
             border:1px solid  black !important;
          }
       </style>
+      <link href='lib/main.css' rel='stylesheet' />
+      <script src='lib/main.js'></script>
+      <script src='js/lightbox.js'></script>
    </head>
 
    <body>
@@ -179,4 +197,3 @@ CHAINE_DE_FIN;   }
 CHAINE_DE_FIN;
          }
    }
-?>
